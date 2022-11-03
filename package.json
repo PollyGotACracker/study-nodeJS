@@ -1,0 +1,20 @@
+{
+  "name": "__jsnode",
+  "version": "1.0.0",
+  "description": "1. nodejs 프로젝트 폴더 만들기 : `mkdir project`\r 2. 프로젝트 폴더에 진입 : `cd project`\r 3. nodejs 프로젝트 생성 : `npm init -y`\r 4. 부모 폴더로 이동 : `cd ..`\r 5. git hub 에 push : `git add`, `git commit`, `git push`\r 6. 왼쪽 프로젝트 목록에서 프로젝트 폴더 우클릭, 터미널 열기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PollyGotACracker/__JSNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PollyGotACracker/__JSNode/issues"
+  },
+  "homepage": "https://github.com/PollyGotACracker/__JSNode#readme"
+}

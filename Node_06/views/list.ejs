@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생정보 관리</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        width: 100vw;
+        height: 100vh;
+      }
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      section:nth-of-type(1) {
+        height: 90%;
+        overflow: hidden scroll;
+      }
+      section:nth-of-type(2) {
+        height: 10%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background-color: #333;
+      }
+
+      form {
+        width: 100%;
+        padding: 0 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      form > * {
+        justify-content: center;
+      }
+      form label {
+        color: white;
+        word-break: keep-all;
+      }
+      form > label {
+        padding: 1em 0;
+        font-weight: 700;
+        font-size: 15pt;
+      }
+      form input {
+        border: 3px solid transparent;
+        outline: 0;
+        border-radius: 5px;
+      }
+      form input:focus {
+        border: 3px solid rgb(118, 118, 238);
+      }
+      form input:invalid,
+      form input:invalid:focus {
+        border: 3px solid rgb(245, 100, 100);
+      }
+      form .div_button_box {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      form button {
+        display: inline-block;
+        background-color: #ccc;
+        text-decoration: none;
+        padding: 1em;
+        margin: 0.5em;
+        border: 0;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      form button:hover {
+        background-color: rgb(118, 118, 238);
+      }
+      #form_select {
+        display: flex;
+      }
+      #form_select > input {
+        width: 70%;
+        padding: 0.5em;
+        margin: 1em;
+      }
+      #form_add {
+        display: none;
+      }
+      #form_add > div:nth-of-type(1) {
+        width: 80%;
+        margin: 1em 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #form_add input {
+        width: 10%;
+        padding: 0.5em;
+        margin: 0 0.5em;
+      }
+      #form_add input:nth-of-type(6) {
+        width: 25%;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table thead {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+      }
+      th {
+        background-color: #333;
+        color: white;
+        font-size: 15pt;
+        padding: 1em;
+      }
+      td {
+        padding: 0.5em;
+        border-bottom: 1px solid #ccc;
+      }
+      td:first-child,
+      td:nth-child(2),
+      td:nth-child(4),
+      td:nth-child(5) {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <table>
+        <thead>
+          <th>학번</th>
+          <th>학생이름</th>
+          <th>학과</th>
+          <th>학년</th>
+          <th>전화번호</th>
+          <th>주소</th>
+        </thead>
+        <tbody>
+          <% students.forEach((student)=> { %>
+          <tr>
+            <td><%= student.st_num %></td>
+            <td><%= student.st_name %></td>
+            <td><%= student.st_dept %></td>
+            <td><%= student.st_grade %></td>
+            <td><%= student.st_tel %></td>
+            <td><%= student.st_addr %></td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <form id="form_select" method="POST">
+        <label>학생 이름 검색</label>
+        <input name="name" />
+        <div class="div_button_box">
+          <button id="btn_all" type="button">전체보기</button>
+          <button id="btn_add" type="button">추가</button>
+        </div>
+      </form>
+      <form id="form_add" method="POST">
+        <label>학생 정보 추가</label>
+        <div>
+          <label for="st_num">학번</label>
+          <input id="st_num" placeholder="학번" minlength="5" maxlength="5" />
+          <label for="st_name">이름</label>
+          <input id="st_name" placeholder="이름" minlength="2" maxlength="5" />
+          <label for="st_dept">학과</label>
+          <input id="st_dept" placeholder="학과" />
+          <label for="st_grade">학년</label>
+          <input id="st_grade" placeholder="학년" maxlength="1" />
+          <label for="st_tel">전화번호</label>
+          <input
+            id="st_tel"
+            placeholder="전화번호"
+            minlength="13"
+            maxlength="13"
+          />
+          <label for="st_addr">주소</label>
+          <input id="st_addr" placeholder="주소" />
+        </div>
+        <div class="div_button_box">
+          <button id="btn_save" type="button">저장</button>
+          <button id="btn_select" type="button">검색으로</button>
+        </div>
+      </form>
+    </section>
+  </body>
+  <script>
+    const formSelect = document.querySelector("#form_select");
+    const formAdd = document.querySelector("#form_add");
+    const btnSelect = document.querySelector("#btn_select");
+    const btnAll = document.querySelector("#btn_all");
+    const btnAdd = document.querySelector("#btn_add");
+    const btnSave = document.querySelector("#btn_save");
+
+    btnAll?.addEventListener("click", () => {
+      location.href = "/list";
+    });
+
+    btnSelect?.addEventListener("click", () => {
+      if (confirm("검색 폼으로 돌아시겠어요?")) {
+        formSelect.style.display = "flex";
+        formAdd.style.display = "none";
+      } else {
+        return false;
+      }
+    });
+    // 이름 검색 직후 추가 폼으로 진입하면 학번 중복검사 안됨. 데이터베이스에서 처리?
+    btnAdd?.addEventListener("click", () => {
+      formSelect.style.display = "none";
+      formAdd.style.display = "flex";
+    });
+
+    const valCheck = () => {
+      const inputs = document.querySelectorAll("#form_add input");
+      const tds = document.querySelectorAll("tbody tr td:nth-child(1)");
+
+      // 학번 중복 검사. 데이터베이스에서 처리?
+      for (let j = 0; j < tds.length; j++) {
+        const numVal = tds[j].textContent;
+        if (inputs[0].value === numVal) {
+          alert("중복되는 학번이 있습니다.");
+        } else {
+          continue;
+        }
+        inputs[0].focus();
+        inputs[0].select();
+        return false;
+      }
+
+      // 학번과 이름 값 체크, 학년 값 범위 체크
+      for (let i = 0; i < inputs.length; i++) {
+        const value = inputs[i].value;
+        const placeholder = inputs[i].placeholder;
+
+        // type을 number로 하면서 value 0 = null 문제를 해결할 수 있는지?
+        if (i <= 1 && !value) {
+          alert(`${placeholder} 칸을 입력하세요.`);
+        } else if (i === 3 && isNaN(value)) {
+          alert("학년은 숫자로 입력하세요.");
+        } else if (i === 3 && (value === "0" || value >= 5)) {
+          alert("학년은 1 ~ 4 까지 입력하세요.");
+        } else {
+          continue;
+        }
+        inputs[i].focus();
+        inputs[i].select();
+        return false;
+      }
+      alert("저장");
+      return true;
+    };
+    btnSave?.addEventListener("click", valCheck);
+  </script>
+</html>
