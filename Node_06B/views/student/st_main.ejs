@@ -1,0 +1,39 @@
+<!-- /student (학생정보) 페이지 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <!-- head 태그 자체는 main 파일에 넣는다 -->
+  <head>
+    <%- include ("../includes/head.ejs") %>
+    <link ref="stylesheet" href="/css/student.css" />
+  </head>
+  <body>
+    <%- include ("../includes/header.ejs") %>
+    <!-- { body : list } 검색 폼 표시 -->
+    <% if (body == "list") {%>
+    <article class="student search">
+      <form>
+        <input name="st_name" placeholder="학생 이름을 입력 후 Enter" />
+      </form>
+    </article>
+    <% } %>
+
+    <section class="main">
+      <article>
+        <!-- { body : list } 현재 student 폴더의 list.ejs. 학생 리스트 표시 -->
+        <% if (body == "list") { %> <%- include ("./st_list.ejs") %> <% } %>
+        <!-- { body : write } 현재 student 폴더의 write.ejs. 입력 폼 표시 -->
+        <% if (body == "write") { %> <%- include ("./st_write.ejs") %> <% } %>
+      </article>
+    </section>
+
+    <!-- { body : list } 학생정보 추가 페이지로 이동하는 버튼 표시 -->
+    <% if (body == "list") { %>
+    <article class="student insert">
+      <!-- anchor tag 로 만든 버튼을 클릭하면 /student/insert 페이지로 이동 -->
+      <!-- cf) host 뒤의 path 를 전부 입력 -->
+      <a href="/student/insert">학생정보 추가</a>
+    </article>
+    <% } %> <%- include ("../includes/footer.ejs") %>
+  </body>
+</html>
