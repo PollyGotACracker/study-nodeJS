@@ -10,27 +10,55 @@
     </div>
     <div>
       <label for="st_name">이름</label>
-      <input name="st_name" id="st_name" />
+      <input name="st_name" id="st_name" value="<%= student.st_name %>" />
     </div>
     <div>
       <label for="st_dept">학과</label>
-      <input name="st_dept" id="st_dept" />
+      <input name="st_dept" id="st_dept" value="<%= student.st_dept %>" />
     </div>
     <div>
       <label for="st_grade">학년</label>
-      <input type="number" name="st_grade" id="st_grade" />
+      <input
+        type="number"
+        name="st_grade"
+        id="st_grade"
+        value="<%= student.st_grade %>"
+      />
     </div>
     <div>
       <label for="st_tel">전화번호</label>
-      <input type="phone" name="st_tel" id="st_tel" />
+      <input
+        type="phone"
+        name="st_tel"
+        id="st_tel"
+        value="<%= student.st_tel %>"
+      />
     </div>
     <div>
       <label for="st_addr">주소</label>
-      <input name="st_addr" id="st_addr" />
+      <input name="st_addr" id="st_addr" value="<%= student.st_addr %>" />
     </div>
     <div>
       <label></label>
       <button type="button" class="btn submit">저장</button>
     </div>
   </fieldset>
+  <script>
+    const st_num = `<%- student.st_num %>`;
+    if (st_num) {
+      const numInput = document.querySelector("input[name='st_num']");
+      // cf) input 속성의 readonly 와 disabled 차이점
+      // form submit 시 readonly 는 값이 전달되지만, disabled 는 전달되지 않는다.
+      numInput.setAttribute("readonly", "readonly");
+      // numInput.value = st_num;
+    }
+
+    const student = JSON.parse(`<%- JSON.stringify(student) %>`);
+    const stInput = document.querySelectorAll("input");
+    const stItems = Object.keys(student);
+    for (let i = 0; i < stItems.length; i++) {
+      // cf) stItems 는 student 객체의 key 배열이므로, i 가 0 일 경우 student['st_num'] 이 된다.
+      stInput[i].value = student[`${stItems[i]}`];
+    }
+  </script>
 </form>

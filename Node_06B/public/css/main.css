@@ -56,6 +56,37 @@ nav li:nth-of-type(5) {
   margin-right: 10px;
 }
 
+table {
+  box-sizing: border-box;
+  width: 95%;
+  margin: 0 auto;
+}
+table.student {
+  width: 90%;
+  border-collapse: collapse;
+}
+table.student td,
+table.student th {
+  text-align: left;
+  padding: 5px 8px;
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  /*
+  table 의 칼럼에 표현되는 TextContent 의 길이가 길어서
+  넘칠 경우 말줄임표(...)을 보이도록 하는 설정
+  */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /*
+  cf)
+  td 에 white-space:nowrap 을 적용할 경우 
+  줄바꿈이 되지 않는 대신 table 의 크기가 커진다.
+  따라서 table-layout:fixed 를 함께 적용하여 표 크기를 고정한다.
+  */
+  table-layout: fixed;
+  cursor: pointer;
+}
+
 footer {
   background-color: #bbb;
   font-size: 8px;

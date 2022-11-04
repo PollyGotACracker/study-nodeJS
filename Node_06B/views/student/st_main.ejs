@@ -1,11 +1,13 @@
 <!-- /student (학생정보) 페이지 -->
+<!-- includes 폴더에 head, header, list, footer .ejs 분할 -->
 
 <!DOCTYPE html>
 <html lang="ko">
   <!-- head 태그 자체는 main 파일에 넣는다 -->
   <head>
     <%- include ("../includes/head.ejs") %>
-    <link ref="stylesheet" href="/css/student.css" />
+    <link rel="stylesheet" href="/css/student.css" />
+    <script src="/js/st_list.js"></script>
   </head>
   <body>
     <%- include ("../includes/header.ejs") %>
@@ -24,6 +26,7 @@
         <% if (body == "list") { %> <%- include ("./st_list.ejs") %> <% } %>
         <!-- { body : write } 현재 student 폴더의 write.ejs. 입력 폼 표시 -->
         <% if (body == "write") { %> <%- include ("./st_write.ejs") %> <% } %>
+        <% if (body == "detail") { %> <%- include ("./st_detail.ejs") %> <% } %>
       </article>
     </section>
 

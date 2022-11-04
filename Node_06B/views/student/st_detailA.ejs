@@ -1,0 +1,28 @@
+<!-- /student/st_num/detail 페이지에서 자세히 보기 표시 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <article>
+    <h1>학생정보 자세히 보기</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>학번</th>
+          <th>이름</th>
+          <th>학과</th>
+          <th>학년</th>
+          <th>전화번호</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= st.st_num %></td>
+          <td><%= st.st_name %></td>
+          <td><%= st.st_dept %></td>
+          <td><%= st.st_grade %></td>
+          <td><%= st.st_tel %></td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</html>

@@ -1,4 +1,4 @@
-<!-- /student 페이지에서 검색 폼과 함께 띄우는 학생 리스트 -->
+<!-- root, /student 페이지에서 검색 폼과 함께 띄우는 학생 리스트 -->
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,7 +14,8 @@
     </thead>
     <tbody>
       <% students.forEach( (st)=>{ %>
-      <tr>
+      <!-- html data-* 속성, JS 에서 dataset 으로 사용 -->
+      <tr data-st_num="<%- st.st_num %>">
         <td><%= st.st_num %></td>
         <td><%= st.st_name %></td>
         <td><%= st.st_dept %></td>
