@@ -21,12 +21,13 @@ header {
   text-shadow: 1px 1px 1px black;
   /* cf) .을 앞에 추가하면 root인 Node_06A 폴더를 기준으로 하므로 없애야 함!! */
   background-image: url("/images/header_img.jpg");
-  background-size: 100% 200%;
+  background-size: 100%;
   background-attachment: fixed;
+  background-position: 0 -5em;
 }
 
 nav {
-  background-color: rgb(87, 87, 248);
+  background-color: rgb(43, 35, 26);
   color: white;
 }
 
@@ -40,16 +41,15 @@ nav li {
   margin: 8px 0px 8px 12px;
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 900;
   white-space: nowrap;
   transition: 0.5s;
 }
 nav li:hover {
-  border-left: 3px solid #ccc;
-  border-right: 3px solid #ccc;
-  background-color: rgb(87, 87, 248);
+  border-left: 3px solid rgba(255, 255, 255, 0.7);
+  border-right: 3px solid rgba(255, 255, 255, 0.7);
 }
 nav li:nth-of-type(5) {
   margin-left: auto;
@@ -64,6 +64,7 @@ table {
 table.student {
   width: 90%;
   border-collapse: collapse;
+  position: relative;
 }
 table.student td,
 table.student th {
@@ -72,6 +73,7 @@ table.student th {
   border-top: 1px solid #bbb;
   border-bottom: 1px solid #bbb;
   /*
+  text-overflow: ellipsis;
   table 의 칼럼에 표현되는 TextContent 의 길이가 길어서
   넘칠 경우 말줄임표(...)을 보이도록 하는 설정
   */
@@ -88,9 +90,10 @@ table.student th {
 }
 
 footer {
-  background-color: #bbb;
+  background-color: rgb(43, 35, 26);
   font-size: 8px;
   text-align: center;
+  color: white;
   padding: 1em;
 }
 

@@ -22,7 +22,7 @@ form label {
   text-align: right;
   margin: 5px;
   padding: 8px;
-  color: rgb(87, 87, 248);
+  color: rgb(230, 117, 11);
   font-weight: 900;
 }
 
@@ -32,12 +32,13 @@ form input {
 
 button.submit {
   color: white;
-  background-color: rgb(87, 87, 248);
+  background-color: rgb(230, 117, 11);
   padding: 12px 2em;
   margin: 5px 0px 10px 0px;
   border-radius: 5px;
   border: 0;
   outline: 0;
+  font-weight: 900;
   cursor: pointer;
 }
 button:hover {

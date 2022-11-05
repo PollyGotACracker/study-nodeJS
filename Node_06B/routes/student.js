@@ -36,6 +36,8 @@ router.get("/", (req, res) => {
 
 //
 router.get("/insert", (req, res) => {
+  // /insert 페이지와 /st_num/update 페이지가 같은 폼을 공유하기 때문에(body:"write")
+  // 학생 정보 추가 버튼을 클릭했을 때 오류를 방지하기 위해 student:{}(객체이므로 중괄호)
   res.render("student/st_main", { body: "write", student: {} });
 });
 
@@ -131,6 +133,7 @@ router.post("/:st_num/update", (req, res) => {
         console.error(err);
       }
       // 변경되었으면 변경된 학생의 정보를 보여주기
+      // res.redirect(`/student?st_name=${student.st_name}`); 는 오류 발생
       res.redirect(`/student/${st_num}/detail`);
     }
   );
@@ -156,4 +159,12 @@ router.post("/:st_num/update", (req, res) => {
 });
 */
 
+router.get("/:st_num/delete", (req, res) => {
+  const st_num = req.params.st_num;
+  const sql = "DELETE FROM tbl_student WHERE st_num = ?";
+
+  mysql.execute(sql, [st_num], (error, students, fields) => {
+    res.redirect(`/student`);
+  });
+});
 export default router;

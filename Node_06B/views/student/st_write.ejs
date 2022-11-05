@@ -53,6 +53,13 @@
       // numInput.value = st_num;
     }
 
+    /**
+     * cf)
+     * router 에서 가져온 데이터를 ejs 에서 파싱할 때 문제 발생...
+     * JSON.stringify() : JavaScript 값이나 객체를 JSON 형식의 문자열로 변환
+     * JSON.parse() : JSON 문자열의 구문을 분석하고, JavaScript 값이나 객체를 반환
+     */
+
     const student = JSON.parse(`<%- JSON.stringify(student) %>`);
     const stInput = document.querySelectorAll("input");
     const stItems = Object.keys(student);

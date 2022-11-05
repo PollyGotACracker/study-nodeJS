@@ -1,3 +1,6 @@
+// /student/S0007/detail 페이지
+// st_detail.ejs 의 student btn-box 의 수정/삭제/리스트 버튼 클릭 시 페이지 이동하는 기능
+
 document.addEventListener("DOMContentLoaded", () => {
   const btnGroup = document.querySelector("div.student.btn-box");
   btnGroup?.addEventListener("click", (e) => {

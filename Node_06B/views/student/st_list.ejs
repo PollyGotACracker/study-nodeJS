@@ -15,6 +15,7 @@
     <tbody>
       <% students.forEach( (st)=>{ %>
       <!-- html data-* 속성, JS 에서 dataset 으로 사용 -->
+      <!-- <%= 를 사용해도 동일 -->
       <tr data-st_num="<%- st.st_num %>">
         <td><%= st.st_num %></td>
         <td><%= st.st_name %></td>
