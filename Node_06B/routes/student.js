@@ -133,7 +133,7 @@ router.post("/:st_num/update", (req, res) => {
         console.error(err);
       }
       // 변경되었으면 변경된 학생의 정보를 보여주기
-      // res.redirect(`/student?st_name=${student.st_name}`); 는 오류 발생
+      // res.redirect(`/student?st_name=${st_name}`); 에서 st_name 을 st_num 으로 바꾸면 안된다...
       res.redirect(`/student/${st_num}/detail`);
     }
   );

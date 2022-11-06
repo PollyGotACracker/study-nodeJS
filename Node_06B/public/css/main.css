@@ -86,9 +86,10 @@ table.student th {
   따라서 table-layout:fixed 를 함께 적용하여 표 크기를 고정한다.
   */
   table-layout: fixed;
+}
+table.student td {
   cursor: pointer;
 }
-
 footer {
   background-color: rgb(43, 35, 26);
   font-size: 8px;

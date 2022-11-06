@@ -31,7 +31,11 @@ const tdClickHandlerV2 = (tag) => {
   // 요소.dataset.설정한 속성명
   const st_num = parentTR.dataset.st_num;
   // alert(st_num);
-  document.location.href = `/student/${st_num}/detail`;
+  if (!st_num) {
+    return false;
+  } else {
+    document.location.href = `/student/${st_num}/detail`;
+  }
 };
 
 // cf) DOMContentLoaded 밖에 함수 선언 가능

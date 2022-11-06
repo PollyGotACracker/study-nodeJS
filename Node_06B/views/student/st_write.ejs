@@ -1,4 +1,4 @@
-<!-- /student/insert 페이지에 표시할 데이터 추가 폼 -->
+<!-- /student/insert, /student/st_num/update 페이지에 표시할 데이터 추가 폼 -->
 
 <form method="POST" class="st_input">
   <fieldset>
@@ -6,7 +6,7 @@
     <!-- div*6>label+input -->
     <div>
       <label for="st_num">학번</label>
-      <input name="st_num" id="st_num" />
+      <input name="st_num" id="st_num" value="<%= student.st_num %>" />
     </div>
     <div>
       <label for="st_name">이름</label>
@@ -44,6 +44,7 @@
     </div>
   </fieldset>
   <script>
+    // Insert 시에는 st_num 의 input 을 수정 가능하게, Update 시에는 수정 불가능하게 해야 한다.
     const st_num = `<%- student.st_num %>`;
     if (st_num) {
       const numInput = document.querySelector("input[name='st_num']");
@@ -60,6 +61,8 @@
      * JSON.parse() : JSON 문자열의 구문을 분석하고, JavaScript 값이나 객체를 반환
      */
 
+    // Update 시 폼에 해당 학생 정보를 넣는다.
+    // input tag 에 value 속성을 쓰는 방법 / JS 로 객체의 프로퍼티를 이용하는 방법
     const student = JSON.parse(`<%- JSON.stringify(student) %>`);
     const stInput = document.querySelectorAll("input");
     const stItems = Object.keys(student);
