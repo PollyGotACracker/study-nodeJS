@@ -32,15 +32,15 @@ form.insert input {
   font-size: 12pt;
 }
 form.insert input:focus {
-  border: 2px solid rgb(255, 94, 0);
+  border: 2px solid rgb(8, 192, 1);
 }
 
 form.insert button.submit {
+  font-family: "Jua";
   padding: 1em;
   border-radius: 5px;
   transition: all 0.5s;
-  font-weight: 700;
-  font-size: 12pt;
+  font-size: 15pt;
   background-color: white;
   word-break: keep-all;
 }
