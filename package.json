@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/PollyGotACracker/__JSNode/issues"
   },
-  "homepage": "https://github.com/PollyGotACracker/__JSNode#readme"
+  "homepage": "https://github.com/PollyGotACracker/__JSNode#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "logger": "^0.0.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.0.0-rc.1",
+    "path": "^0.12.7"
+  }
 }

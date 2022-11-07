@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <script src="/js/click.js"></script>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>날짜</th>
+        <th>식품명</th>
+        <th>섭취량</th>
+        <th>칼로리</th>
+        <th>총 칼로리</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% lists.forEach((ele) => { %>
+      <tr>
+        <td><%= ele.date %></td>
+        <td><%= ele.food %></td>
+        <td><%= ele.intake %></td>
+        <td><%= ele.cal %>K</td>
+        <td><%= (ele.intake) * (ele.cal) %>K</td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</html>

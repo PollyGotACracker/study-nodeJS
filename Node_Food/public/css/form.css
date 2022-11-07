@@ -1,0 +1,49 @@
+form.insert {
+  width: 100%;
+  background-color: rgb(236, 70, 41);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1em;
+}
+form.insert div {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 20px;
+  width: 20%;
+}
+form.insert label {
+  width: 3em;
+  margin-right: 1em;
+  white-space: nowrap;
+  font-size: 20pt;
+  display: flex;
+  align-items: center;
+  font-family: "Jua";
+}
+form.insert input {
+  border: 2px solid transparent;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0.8em;
+  width: 80%;
+  font-size: 12pt;
+}
+form.insert input:focus {
+  border: 2px solid rgb(255, 94, 0);
+}
+
+form.insert button.submit {
+  padding: 1em;
+  border-radius: 5px;
+  transition: all 0.5s;
+  font-weight: 700;
+  font-size: 12pt;
+  background-color: white;
+  word-break: keep-all;
+}
+form.insert button.submit:hover {
+  box-shadow: 0px 0px 20px white;
+}

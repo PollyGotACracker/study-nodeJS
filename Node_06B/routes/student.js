@@ -68,7 +68,7 @@ router.post("/insert", (req, res) => {
      * 이미 List 를 보여주는 router(RequestMapping) 가 있으니
      * 다시 한번 요청을 해달라
      */
-    // cf) 입력한 데이터 중 st_name 값을 path 로 지정하여 리디렉션
+    // cf) 입력한 데이터 중 st_name 값을 path 로 지정하여 리디렉션. input 이름 검색 결과
     res.redirect(`/student?st_name=${student.st_name}`);
   });
 });
@@ -133,7 +133,7 @@ router.post("/:st_num/update", (req, res) => {
         console.error(err);
       }
       // 변경되었으면 변경된 학생의 정보를 보여주기
-      // res.redirect(`/student?st_name=${st_name}`); 에서 st_name 을 st_num 으로 바꾸면 안된다...
+      // res.redirect(`/student?st_name=${st_name}`);  input 이름 검색 결과
       res.redirect(`/student/${st_num}/detail`);
     }
   );

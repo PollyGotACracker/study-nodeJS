@@ -14,15 +14,16 @@
 - template engine 등록 (app.engine)
 - 애플리케이션 동작 방법 세팅
 
-1. app.use([path,] callback [, callback...])
+### app.use([path,] callback [, callback...])
 
 - 지정한 path 에 middleware 함수를 mount 한다. middleware 함수는 요청받은 path의 기본 경로(base)가 지정한 path 와 일치할 때 실행된다.
 
-2. app.set(name, value)
+### app.set(name, value)
 
 - value 에 setting name 을 할당한다.
 - 원하는 value 를 저장할 수도 있고, 특정 name 을 사용하여 서버의 동작을 구성할 수도 있다. name 은 app setting 테이블에 나열된다.
-- boolean 프로퍼티에 대한 `app.set('foo', true)` 호출은 `app.enable('foo')` 호출과 같다. 마찬가지로 boolean 프로퍼티에 대해 `app.set('foo', false)` 호출은 `app.disable('foo')` 호출과 같다.
+- boolean 프로퍼티에 대한 `app.set('foo', true)` 호출은 `app.enable('foo')` 호출과 같다.  
+  마찬가지로 boolean 프로퍼티에 대해 `app.set('foo', false)` 호출은 `app.disable('foo')` 호출과 같다.
 - `app.get()` 을 사용하여 setting value 를 찾는다.
 
 ## Request: 요청 객체
@@ -85,7 +86,8 @@ res.render('user', { name: 'Tobi' }, function (err, html) {
 ### res.json([body])
 
 - JSON.stringify()를 사용하여 JSON 문자열로 변환된 파라미터 응답을 올바른 Content-Type 과 함께 클라이언트에게 보낸다.
-- 파라미터는 object, array, string, boolean, number, null 을 포함한 모든 JSON 타입이다. 또는 다른 값을 JSON 형식으로 변환할 수 있다.
+- 파라미터는 object, array, string, boolean, number, null 을 포함한 모든 JSON 타입이다.  
+  또는 다른 값을 JSON 형식으로 변환할 수 있다.
 
 ### res.redirect([status,] path)
 
@@ -98,9 +100,10 @@ res.render('user', { name: 'Tobi' }, function (err, html) {
 - http://expressjs.com/en/guide/routing.html
 - route 와 middleware 의 기능을 수행하는 독립적인 인스턴스
 
-1. router.METHOD(path, [callback, ...] callback)
+### router.METHOD(path, [callback, ...] callback)
 
-- GET, PUT, POST 등의 HTTP 메서드를 사용하여 라우팅 기능을 제공한다(`router.get()`, `router.post()`, `router.put()` ...).
+- GET, PUT, POST 등의 HTTP 메서드를 사용하여 라우팅 기능을 제공한다.  
+  (`router.get()`, `router.post()`, `router.put()` ...)
 - 여러 개의 callback 을 사용할 수 있으며, callback 이 next('route') 를 호출하여 나머지 route callback 들을 우회할 수 있다는 특징을 갖는다.  
   이를 사용하여 route 에서 사전 조건(pre-condition)을 수행한 후, 현재 route 를 진행할 이유가 없다면 그 다음 route 에 제어를 전달할 수 있다.
 - path 문자열에는 콜론(:)을 이용해 파라미터를 사용할 수 있으며, 구체적인 제약 조건이 있는 경우 정규표현식을 사용할 수 있다.
