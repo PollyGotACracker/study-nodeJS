@@ -1,0 +1,23 @@
+table.today tbody {
+  position: relative;
+}
+div.tooltip {
+  opacity: 0;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  width: 50px;
+  height: 30px;
+  background-color: #333;
+  border-radius: 10px;
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+div.tooltip.active {
+  opacity: 1;
+}
