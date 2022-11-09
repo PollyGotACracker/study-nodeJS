@@ -52,7 +52,7 @@ router.get("/", async (req, res, next) => {
     return res.render("index", { todays });
   } catch (error) {
     console.log(error);
-    return res.send("오류가 발생함");
+    return res.send("오류 발생");
   }
 });
 
@@ -76,8 +76,20 @@ router.post("/", async (req, res) => {
   try {
     await mysqlConn.promise().execute(TD_INSERT_OR_UPDATE, params);
   } catch (error) {
-    res.write(error);
+    console.log(error);
     return res.end("Insert or Update SQL 문제 발생");
+  }
+  res.redirect("/");
+});
+
+router.get("/:seq/delete", async (req, res) => {
+  const seq = req.params.seq;
+  console.log(seq);
+  try {
+    await mysqlConn.promise().execute(TD_DELETE, [seq]);
+  } catch (error) {
+    console.log(error);
+    return res.end("delete SQL 문제 발생");
   }
   res.redirect("/");
 });

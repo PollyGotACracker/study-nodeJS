@@ -1,7 +1,13 @@
 table.today tbody {
   position: relative;
 }
-div.tooltip {
+table.today tr.select {
+  background-color: rgb(255, 163, 163);
+}
+table.today tr.select:hover {
+  background-color: rgb(255, 163, 163);
+}
+div.btn_delete {
   opacity: 0;
   display: flex;
   position: fixed;
@@ -10,14 +16,20 @@ div.tooltip {
   color: white;
   width: 50px;
   height: 30px;
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   z-index: 99;
   justify-content: center;
   align-items: center;
+  /* pointer-events: active 클래스가 사라지면 클릭되지 않게 방지 */
+  pointer-events: none;
   transition: opacity 0.5s;
 }
-
-div.tooltip.active {
+div.btn_delete.active {
   opacity: 1;
+  pointer-events: all;
+  cursor: pointer;
+}
+div.btn_delete.active:hover {
+  background-color: rgb(240, 56, 56);
 }
