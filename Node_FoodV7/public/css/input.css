@@ -1,0 +1,77 @@
+table.today {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+td,
+th {
+  text-align: left;
+  border-bottom: 1px solid #bbb;
+  border-top: 1px solid #bbb;
+  padding: 12px 16px;
+  white-space: nowrap;
+  /*
+  text 를 더블클릭, 드래그 할 때 text 가 선택되지 않도록 하기
+  데이터를 표시하는 영역, label, span 등에서 사용한다.
+  일종의 간단한 복사 방지 역할도 한다.
+  */
+  user-select: none;
+}
+tr {
+  transition: background-color 0.1s;
+}
+table.today input {
+  width: 90%;
+  padding: 3px;
+}
+table.today tbody tr:not(:nth-last-of-type(1)) {
+  cursor: pointer;
+}
+table.today tbody tr:not(.select):not(:nth-last-of-type(1)):hover {
+  background-color: #ccc;
+}
+button.today {
+  background-color: rgb(59, 59, 235);
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 5px;
+  /* system 기본 font size 와 1:1 */
+  font-size: 12px;
+}
+button.today.reset {
+  background-color: rgb(255, 181, 44);
+  color: black;
+}
+button.today.update {
+  background-color: rgb(7, 163, 7);
+  font-size: 0;
+}
+/* 
+tag 에 부착하는 가상 tag 클래스
+before, after
+*/
+button.today.update::before {
+  font-size: 12px;
+  content: "변경";
+}
+button.today:hover {
+  background-color: #bbb;
+  color: black;
+}
+input[name="t_seq"] {
+  display: none;
+}
+span.today.delete {
+  font-size: 20px;
+  font-weight: 900;
+  color: #aaa;
+  opacity: 0;
+  transition: 0.5s;
+}
+/* table 의 tr 에 hover 가 되면 span 의 style 을 변경 */
+table.today tr:hover span.today.delete {
+  opacity: 1;
+}
