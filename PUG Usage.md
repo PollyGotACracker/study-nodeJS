@@ -1,16 +1,6 @@
 # PUG
 
-<<<<<<< HEAD
-- link(rel='stylesheet', href='/css/style.css')
-- block : 내부 코드를 모듈화하는 키워드 block content
-- extends : 다른 파일을 import 하는 키워드 extends layout
-- 열거나 닫는 태그 없음, 들여쓰기에 주의+주석도(Python 과 유사. tab 키 사용)
-- `h1= title` router 에서 전달한 변수 사용. = 앞에 띄어쓰기 X
-- `p Welcome to #{title}` 변수 사용 시 ${ } 가 아닌 #{ } 사용
-- 템플릿 리터럴 사용 가능 `` `${ }` `` 사용 가능
-=======
 - https://pugjs.org/api/getting-started.html
->>>>>>> b5ea8e6a3268ac0f3dd8cb46a2ecb62a039c2783
 
 ---
 
@@ -36,8 +26,8 @@ a(class='button', href='//google.com') Google
 body(class=authenticated ? 'authed' : 'anon')
 ```
 
-- 속성의 값에 JS 변수, + 기호나 template literal `\`${ }\`` 을 사용할 수 있다.
-- 변수 사용 시 `#{ }` 을 사용한다. `p Welcome to #{title}`
+- 속성의 값에 JS 변수, + 기호나 template literal `` `${ }` `` 을 사용할 수 있다.
+- 텍스트 사이에 변수 사용 시 `#{ }` 을 사용한다. `p Welcome to #{title}`
 
 ## Tags
 
