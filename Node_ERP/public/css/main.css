@@ -44,24 +44,39 @@ nav.main li {
   border-bottom: 3px solid transparent;
   transition: 0.5s;
 }
-
-nav.main li:hover {
-  border-bottom: 3px solid yellowgreen;
-}
 nav.main li:nth-last-child(1) {
   margin-left: auto;
 }
-
+nav.main li:hover {
+  border-bottom: 3px solid yellowgreen;
+}
 section.main {
   flex: 1;
+  width: 100%;
 }
-
 footer {
   background-color: rgb(37, 37, 37);
   color: white;
   padding: 0.8em;
   text-align: center;
 }
+/* mouse hover */
+input:hover {
+  background-color: #eee;
+}
+/* mouse click, focus */
+input:focus {
+  background-color: #ddd;
+}
+button {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+button:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
 /*
 cf)
 -box-shadow
@@ -89,14 +104,3 @@ cf)
     text-shadow: revert-layer;
     text-shadow: unset;
 */
-button:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.7);
-}
-/* mouse hover */
-input:hover {
-  background-color: #eee;
-}
-/* mouse click, focus */
-input:focus {
-  background-color: #ddd;
-}

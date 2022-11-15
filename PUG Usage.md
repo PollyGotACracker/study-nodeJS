@@ -26,7 +26,7 @@ a(class='button', href='//google.com') Google
 body(class=authenticated ? 'authed' : 'anon')
 ```
 
-- 속성의 값에 JS 변수, + 기호나 template literal `` `${ }` `` 을 사용할 수 있다.
+- 속성의 값에 JS 변수, `+` 기호나 template literal `` `${ }` `` 을 사용할 수 있다.
 - 텍스트 사이에 변수 사용 시 `#{ }` 을 사용한다. `p Welcome to #{title}`
 
 ## Tags
@@ -109,8 +109,9 @@ script(src='/javascripts/app.js')
 ## Template Inheritance
 
 - `block`, `extends` 키워드로 복잡한 페이지 템플릿 구조를 작고 단순한 파일로 분할할 수 있다.
-- `block` : 내부 코드를 모듈화하는 키워드 block content
-- `extends` : 다른 파일을 import 하는 키워드 extends layout
+- `block` : 내부 코드를 모듈화하는 키워드. 키워드 뒤에 오는 문자(content)는 원하는 대로 지정할 수 있다. `block content`  
+  layout 파일에서는 block 키워드가 단 한번 사용되며, 각 block 파일들은 해당 파일이 실행될 때 layout 파일의 내용을 포함한다.
+- `extends` : 다른 파일을 import 하는 키워드. block 이 있는 파일의 최상단에 사용한다. `extends layout`
 - 다른 파일 또는 router 에서 전달한 변수의 값을 사용할 수 있다. 등호 앞은 띄어쓰기 하지 않는다. `h1= title`
 
 ```

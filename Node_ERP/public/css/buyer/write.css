@@ -92,3 +92,10 @@ button.buyer.list {
 button.buyer.reset {
   background-color: yellowgreen;
 }
+/* button 속성 중에 disabled="disable"가 설정되었을 때 */
+button[disabled] {
+  border: 1px solid #999 !important;
+  background-color: #ccc !important;
+  color: #777;
+  cursor: not-allowed;
+}
