@@ -7,9 +7,9 @@ article.user.login.container {
   transform: translate(-50%, -50%);
   width: 400px;
   padding: 40px;
-  background-color: #191919;
+  background-color: rgb(37, 37, 37);
   border-radius: 20px;
-  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  box-shadow: 0px 12px 2px 1px rgba(82, 82, 204, 0.2);
   margin: 0 auto;
   color: white;
   display: flex;
@@ -22,7 +22,8 @@ article.user.login.container {
 }
 
 h1.user.login.title {
-  font-size: 2em;
+  font-size: 3em;
+  letter-spacing: 0.1em;
 }
 
 h2.user.login.error,
@@ -39,15 +40,15 @@ form.login button {
 }
 
 h2.user.error {
-  background-color: red;
-  color: yellow;
+  background-color: rgb(223, 50, 50);
+  color: rgb(255, 217, 0);
   text-align: center;
+  word-break: keep-all;
 }
 
 form.login input {
-  background-color: rgb(153, 153, 224);
-  border: 3px solid greenyellow;
-  color: white;
+  background-color: rgb(199, 205, 216);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 form.login input:hover {
@@ -62,13 +63,14 @@ form.login input:focus {
 form.login button {
   /* opacity 를 사용할 경우 글자색에도 영향 */
   /* font color 는 그대로 두고 배경색에만 opacity 주기 */
-  background-color: rgba(39, 131, 39, 0.6);
-  color: yellowgreen;
+  background-color: rgba(82, 82, 204, 0.6);
+  color: white;
+  font-size: 12pt;
   font-weight: 900;
 }
 
 form.login button:hover {
-  background-color: rgba(39, 131, 39, 1);
+  background-color: rgba(82, 82, 204, 1);
   cursor: pointer;
 }
 

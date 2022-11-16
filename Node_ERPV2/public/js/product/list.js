@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (target.tagName === "TD") {
       const pTR = target.closest("TR");
       const code = pTR.dataset.p_code;
-
       document.location.href = `/product/detail/${code}`;
     }
   });

@@ -8,14 +8,10 @@ form.buyer.write fieldset {
   background-color: rgb(253, 253, 253);
 }
 
-form.buyer.write div {
-  width: 90%;
-}
-
 form.buyer.write legend {
   margin: 50px;
   padding: 10px;
-  color: rgb(52, 152, 219);
+  color: rgb(82, 82, 204);
   font-weight: 900;
   font-size: 15pt;
 }
@@ -35,7 +31,7 @@ form.buyer.write input {
 form.buyer.write label {
   flex: 1;
   text-align: right;
-  color: rgb(52, 152, 219);
+  color: rgb(0, 174, 255);
   font-weight: bold;
 }
 /* cf) flex: label과 input 박스의 크기 비율 1:3 */
@@ -81,7 +77,7 @@ div.button.box button {
 }
 
 button.buyer.input {
-  background-color: rgb(95, 95, 218);
+  background-color: rgb(82, 82, 204);
   color: white;
 }
 

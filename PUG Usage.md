@@ -28,6 +28,7 @@ body(class=authenticated ? 'authed' : 'anon')
 
 - 속성의 값에 JS 변수, `+` 기호나 template literal `` `${ }` `` 을 사용할 수 있다.
 - 텍스트 사이에 변수 사용 시 `#{ }` 을 사용한다. `p Welcome to #{title}`
+- 변수의 값을 문자열로 사용할 경우 backtick 으로 묶는다.
 
 ## Tags
 

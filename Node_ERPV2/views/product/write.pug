@@ -1,33 +1,52 @@
 extends ../layout
 
 block content 
+    link(rel="stylesheet" href="/css/product/write.css")
+    script.
+        const public_p_code= `#{product.p_code}`
+        const public_p_tax= `#{product.p_tax}`
     script(src="/js/product/write.js")
     form(method="POST").product.write
         fieldset
-            legend
+            legend 상품정보 등록
             div
-                label(for="p_code") 
-                input(name="p_code", id="p_code", placeholder="상품코드를 입력하세요", title="상품코드", maxlength="13" type="text")
+                label(for="p_code") 상품코드
+                input(name="p_code", id="p_code", placeholder="상품코드 13자리를 입력하세요", title="상품코드", maxlength="13" type="text", value=product.p_code)
             div
-                label(for="p_title") 
-                input(name="p_title", id="p_title", placeholder="상품명을 입력하세요", title="상품명", type="text")
+                label(for="p_title") 상품명
+                input(name="p_title", id="p_title", placeholder="상품명을 입력하세요", title="상품명", type="text", value=product.p_title)
             div
-                label(for="p_main_cat") 
-                input(name="p_main_cat", id="p_main_cat", placeholder="대분류를 입력하세요", title="대분류", type="text")
+                label(for="p_main_cat") 대분류
+                input(name="p_main_cat", id="p_main_cat", placeholder="대분류를 입력하세요", title="대분류", type="text", value=product.p_main_cat)
             div
-                label(for="p_iprice") 
-                input(name="p_iprice", id="p_iprice", placeholder="매입단가를 입력하세요", title="매입단가", type="number")
+                label(for="p_mid_cat") 중분류
+                input(name="p_mid_cat", id="p_mid_cat", placeholder="중분류를 입력하세요", title="중분류", type="text", value=product.p_mid_cat)
             div
-                label(for="p_oprice_type") 
-                input(id="p_oprice_type", placeholder="판매단가를 입력하세요", title="판매단가", type="number")
-                input(name="p_oprice", id="p_oprice", readonly)
+                label(for="p_sub_cat") 소분류
+                input(name="p_sub_cat", id="p_sub_cat", placeholder="소분류를 입력하세요", title="소분류", type="text", value=product.p_sub_cat)
             div
-                label(for="p_tax_y") 예
-                input(name="p_tax", id="p_tax_y", value="1", title="과세여부", type="radio" checked)
-                label(for="p_tax_n") 아니오
-                input(name="p_tax", id="p_tax_n", value="0", title="과세여부", type="radio")
+                label(for="p_industry") 제조사
+                input(name="p_industry", id="p_industry", placeholder="제조사를 입력하세요", title="제조사", type="text", value=product.p_industry)
+            div
+                label(for="p_buyer") 주요매입처
+                input(name="p_buyer", id="p_buyer", placeholder="주요매입처를 입력하세요", title="주요매입처", type="text", value=product.p_buyer)
+            div
+                label(for="p_iprice") 매입단가
+                input(name="p_iprice", id="p_iprice", placeholder="매입단가를 입력하세요", title="매입단가", type="number", value=product.p_iprice)
+            div
+                label 과세여부
+                div.ptax.container
+                    label(for="p_tax_y") 예
+                    input(name="p_tax", id="p_tax_y", value="1", title="과세여부", type="radio")
+                    label(for="p_tax_n") 아니오
+                    input(name="p_tax", id="p_tax_n", value="0", title="과세여부", type="radio")
+            div
+                label(for="p_oprice_type") 판매단가
+                div.poprice.container
+                    input(id="p_oprice_type", placeholder="판매단가를 입력하세요", title="판매단가", type="number")
+                    span 부가세 제외:
+                    input(name="p_oprice", id="p_oprice", value=product.p_oprice, readonly)
             div.button.box
                 button(type="button").product.input 저장
                 button(type="button").product.list 리스트로
                 button(type="reset").product.reset 새로작성
-                 

@@ -1,6 +1,7 @@
 extends ../layout
 
 block content 
+    link(rel="stylesheet" href="/css/product/list.css")
     script(src="/js/product/list.js")
     table.product.list
         thead
@@ -16,7 +17,7 @@ block content
                     td= product.p_code 
                     td= product.p_title 
                     td= product.p_main_cat 
-                    td= product.p_iprice
-                    td= product.p_oprice
-    button.button.box 
+                    td= product.p_iprice.toLocaleString("ko-KR")
+                    td= product.p_oprice.toLocaleString("ko-KR")
+    div.button.box 
         button.product.insert 상품추가
