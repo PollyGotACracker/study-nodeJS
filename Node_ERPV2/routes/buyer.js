@@ -4,15 +4,26 @@ const Buyer = DB.models.tbl_buyer;
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const buyers = await Buyer.findAll();
-  res.render("buyer/list", { buyers });
+  if (req.session.user) {
+    const buyers = await Buyer.findAll();
+    return res.render("buyer/list", { buyers });
+  }
+  res.redirect("/users/login?error=LOGIN");
 });
 
 router.get("/insert", (req, res) => {
-  res.render("buyer/write", { buyer: {} });
+  if (req.session.user && req.session.user.user_role < 5) {
+    return res.render("buyer/write", { buyer: {} });
+  }
+  res.redirect("/users/login?error=ROLE");
 });
 
 router.post("/insert", async (req, res) => {
+  const user = req.session?.user;
+  if (!user || !user?.user_role || user.user_role >= 5) {
+    return res.redirect("/users/login?error=ROLE");
+  }
+
   const data = req.body;
   console.log(data);
   try {
@@ -25,6 +36,11 @@ router.post("/insert", async (req, res) => {
 });
 
 router.get("/detail/:bcode", async (req, res) => {
+  const user = req.session?.user;
+  if (!user) {
+    return res.redirect("/users/login?error=ROLE");
+  }
+
   const bcode = req.params.bcode;
   try {
     /**
@@ -41,6 +57,11 @@ router.get("/detail/:bcode", async (req, res) => {
 });
 
 router.get("/update/:bcode", async (req, res) => {
+  const user = req.session?.user;
+  if (!user || !user?.user_role || user.user_role >= 5) {
+    return res.redirect("/users/login?error=ROLE");
+  }
+
   const bcode = req.params.bcode;
   try {
     const buyer = await Buyer.findOne({ where: { b_code: bcode } });
@@ -52,6 +73,11 @@ router.get("/update/:bcode", async (req, res) => {
 });
 
 router.post("/update/:bcode", async (req, res) => {
+  const user = req.session?.user;
+  if (!user || !user?.user_role || user.user_role >= 5) {
+    return res.redirect("/users/login?error=ROLE");
+  }
+
   try {
     await Buyer.update(req.body, { where: { b_code: req.body.b_code } });
     res.redirect(`/buyer/detail/${req.body.b_code}`);
@@ -61,6 +87,11 @@ router.post("/update/:bcode", async (req, res) => {
 });
 
 router.get("/delete/:bcode", async (req, res) => {
+  const user = req.session?.user;
+  if (!user || !user?.user_role || user.user_role >= 5) {
+    return res.redirect("/users/login?error=ROLE");
+  }
+
   const bcode = req.params.bcode;
   try {
     await Buyer.destroy({ where: { b_code: bcode } });

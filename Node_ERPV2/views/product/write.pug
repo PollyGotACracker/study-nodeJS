@@ -1,0 +1,33 @@
+extends ../layout
+
+block content 
+    script(src="/js/product/write.js")
+    form(method="POST").product.write
+        fieldset
+            legend
+            div
+                label(for="p_code") 
+                input(name="p_code", id="p_code", placeholder="상품코드를 입력하세요", title="상품코드", maxlength="13" type="text")
+            div
+                label(for="p_title") 
+                input(name="p_title", id="p_title", placeholder="상품명을 입력하세요", title="상품명", type="text")
+            div
+                label(for="p_main_cat") 
+                input(name="p_main_cat", id="p_main_cat", placeholder="대분류를 입력하세요", title="대분류", type="text")
+            div
+                label(for="p_iprice") 
+                input(name="p_iprice", id="p_iprice", placeholder="매입단가를 입력하세요", title="매입단가", type="number")
+            div
+                label(for="p_oprice_type") 
+                input(id="p_oprice_type", placeholder="판매단가를 입력하세요", title="판매단가", type="number")
+                input(name="p_oprice", id="p_oprice", readonly)
+            div
+                label(for="p_tax_y") 예
+                input(name="p_tax", id="p_tax_y", value="1", title="과세여부", type="radio" checked)
+                label(for="p_tax_n") 아니오
+                input(name="p_tax", id="p_tax_n", value="0", title="과세여부", type="radio")
+            div.button.box
+                button(type="button").product.input 저장
+                button(type="button").product.list 리스트로
+                button(type="reset").product.reset 새로작성
+                 

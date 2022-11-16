@@ -23,6 +23,7 @@ import DB from "../models/index.js";
 import indexRouter from "../routes/index.js";
 import usersRouter from "../routes/users.js";
 import buyerRouter from "../routes/buyer.js";
+import productRouter from "../routes/product.js";
 
 // create express framework
 const app = express();
@@ -37,7 +38,7 @@ const sessionOption = {
   resave: false, // 매번 session 을 새로 작성할 것인지, 성능상 문제로 false 권장
   saveUninitialized: false, // 모든 session 을 저장할 것인지, 성능상 문제로 false 권장
   httpOnly: false,
-  originalMaxAge: 1000 * 60, // 1000ms * 60 = 1분
+  originalMaxAge: 1000 * 1800, // 1000ms * 60 = 1분
 };
 
 app.use(expressSession(sessionOption));
@@ -78,6 +79,7 @@ app.use("/", (req, res, next) => {
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/buyer", buyerRouter);
+app.use("/product", productRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

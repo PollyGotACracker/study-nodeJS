@@ -51,3 +51,33 @@ user_role	INT	DEFAULT 9
 );
 
 DESC tbl_users;
+
+INSERT tbl_users (
+	username, password, 
+	real_name, nick_name, user_role)
+VALUES (
+	'polly', '12345', '홍길동', '길동아', 1
+);
+
+
+INSERT tbl_users (
+	username, password, 
+	real_name, nick_name, user_role)
+VALUES (
+	'pollor', '12345', '성춘향', '춘향아', 5
+);
+
+SELECT * FROM tbl_users;
+
+CREATE TABLE IF NOT EXISTS tbl_product(
+p_code	VARCHAR(13)		PRIMARY KEY,
+p_title	VARCHAR(125)	NOT NULL,	
+p_main_cat	VARCHAR(10),		
+p_mid_cat	VARCHAR(10),		
+p_sub_cat	VARCHAR(10),		
+p_industry	VARCHAR(125),		
+p_buyer	VARCHAR(125),		
+p_iprice	INT,		
+p_tax	INT	DEFAULT 1,	
+p_oprice	INT	NOT NULL	
+);
