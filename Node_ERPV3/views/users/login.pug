@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    link(rel="stylesheet", href="/css/users/login.css")
+    script(src="/js/users/login.js")
+    //- cf) tag 이름 없이 class만 넣으면 div tag 로 인식
+    article.user.login.container 
+        h1.user.login.title LOGIN
+        if error
+            - let msg = error === "LOGIN" ? "로그인이 필요한 서비스입니다." : null
+            - msg = error === "ROLE" ? "사용할 수 있는 권한이 없습니다." : msg
+            - msg = error === "USERNAME" ? "USERNAME 이 없습니다." : msg
+            - msg = error === "PASSWORD" ? "비밀번호가 잘못되었습니다." : msg
+            h2.user.login.error= msg
+        form.user.login(method="POST")
+            //- cf) tag 의 각 attribute 는 comma 를 찍어주는 것이 좋다.
+            input(name="username", placeholder="USERNAME", title="사용자 ID")
+            input(name="password", type="password", placeholder="PASSWORD", title="비밀번호")
+            button(type="button").user.login 로그인
+        div.login.url 
+            a(href="/users/join") 회원가입
+            span &nbsp;|&nbsp;
+            a(href="/users/loss/username") 아이디 찾기
+            span &nbsp;|&nbsp;
+            a(href="/users/loss/password") 비밀번호 찾기

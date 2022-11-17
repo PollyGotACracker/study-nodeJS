@@ -36,6 +36,7 @@ form.product.write div label {
 form.product.write div.container {
   flex: 3;
   display: flex;
+  padding: 0 8px;
 }
 form.product.write div input {
   flex: 3;
