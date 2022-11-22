@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(`/buyer/check/${bcode}`)
       .then((res) => res.json()) // .then( (res)=>{ return res.json() })
       .then((json) => {
+        // cf) 응답의 상태가 200-299를 벗어날 경우 ok (en-US) 속성이 false로 설정
         if (json.status) {
           alert(`${json.message}\n다른 코드를 입력하세요`);
           bcodeInput.select();
