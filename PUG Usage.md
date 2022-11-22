@@ -53,8 +53,11 @@ ul
   li item
 ```
 
+- 여러 줄에 걸쳐 코드 작성 시(block unbuffered code) hyphen(-) 다음 줄부터 작성한다.
+
 ```
-- var list = ["Uno", "Dos", "Tres",
+-
+var list = ["Uno", "Dos", "Tres",
           "Cuatro", "Cinco", "Seis"]
 each item in list
   li= item
@@ -140,4 +143,31 @@ block content
   - var pets = ['cat', 'dog']
   each petName in pets
     include pet.pug
+```
+
+## Includes
+
+- `include` 키워드를 사용하여 다른 pug 파일의 내용을 삽입할 수 있다.
+
+```
+doctype html
+html
+  include includes/head.pug
+  body
+    ...
+    include includes/foot.pug
+```
+
+- js, css 등 다른 형식의 파일도 삽입할 수 있다.
+
+```
+doctype html
+html
+  head
+    style
+      include style.css
+  body
+    ...
+    script
+      include script.js
 ```
