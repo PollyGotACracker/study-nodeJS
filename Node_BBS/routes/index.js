@@ -3,6 +3,9 @@ import { MongoClient } from "mongodb";
 import { atlasURL } from "../config/mongoDB.js";
 
 // atlas 접속하기
+// new 키워드를 사용하여 MongoClient 클래스를 통하여
+// client 객체를 생성하기
+// mongoDB 에 연결하기 위한 준비도구
 const client = new MongoClient(atlasURL);
 // BBS(bbs 라는 이름으로) Collection 시작
 const BBS = client.db().collection("bbs");
@@ -18,7 +21,9 @@ router.get("/", async (req, res, next) => {
     b_content: "게시판을 작성합시다.",
   };
   try {
-    const result = await BBS.insertOne(bbs);
+    // bbs 데이터 전체 SELECT
+    const result = await bbs.save();
+
     return res.json(result);
   } catch (err) {
     return res.json(err);

@@ -1,0 +1,19 @@
+table.bbs.list {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table.bbs.list thead th {
+  width: calc(100% / 5);
+  padding: 10px 0;
+  border-bottom: 2px solid black;
+  font-size: 15pt;
+}
+table.bbs.list tbody td {
+  padding: 10px 0;
+  border-bottom: 1px dotted #ccc;
+}
+table.bbs.list tbody td:nth-of-type(1),
+table.bbs.list tbody td:nth-of-type(2) {
+  text-align: center;
+}
