@@ -1,0 +1,85 @@
+article.bbs.detail {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr 2fr);
+}
+article.bbs.detail div {
+  padding: 10px;
+  display: inline-block;
+  border-bottom: 1px solid #aaa;
+}
+
+/*
+nth-of-type() 변수 n 이 추가되면
+forEach() 처럼 작동된다
+n + 5: 
+0번부터 시작하여 5번 위치와 6번 위치의 div.label 에 속성 지정
+*/
+.label:nth-of-type(n + 6) {
+  background-color: #eee;
+}
+article.bbs.detail .label {
+  justify-content: center;
+  font-weight: 700;
+}
+article.bbs.detail div:not(:nth-last-of-type(1)) {
+  display: flex;
+  align-items: center;
+}
+article.bbs.detail div:nth-of-type(9) {
+  display: none;
+}
+article.bbs.detail div:nth-of-type(8) {
+  grid-column: 2 / 7;
+}
+article.bbs.detail div:nth-of-type(10) {
+  grid-column: 1 / 7;
+  height: 50vh;
+}
+.bbs.detail.button.box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.bbs.detail.button.box > button {
+  margin-right: 10px;
+}
+.bbs.comments {
+  width: 100%;
+  margin: 20px 0 auto;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #aaa;
+}
+.comments.item p {
+  border: 1px solid #181818;
+  border-radius: 20px;
+  padding: 2%;
+  margin: 5px 5px 5px 10px;
+  position: relative;
+}
+.comments.item p:before {
+  position: absolute;
+  left: -20px;
+  top: calc(50% - 10px);
+  content: "";
+  background-color: transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #181818;
+}
+.comments.input {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
+}
+.comments.input #b_comment {
+  flex: 7;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  margin-right: 10px;
+}

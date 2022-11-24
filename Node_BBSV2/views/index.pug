@@ -10,7 +10,6 @@ block content
           th 작성시각
           th 작성자ID
           th 제목
-          th ...
       tbody
         each bbs in bbsList
           tr(data-id=`${bbs._id}`)
@@ -18,6 +17,11 @@ block content
             td= bbs.b_time
             td= bbs.b_writer
             td= bbs.b_subject
-            td 
+          each cmm in bbs.b_comments
+            tr 
+              td  
+              td
+              td= cmm.ct_writer
+              td ↳ `#{cmm.ct_comment}`
     div.bbs.button.box
       button.bbs.insert 추가

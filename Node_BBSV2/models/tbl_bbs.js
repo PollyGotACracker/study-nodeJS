@@ -4,6 +4,7 @@
  */
 
 import mongoose from "mongoose";
+import commentModel from "./tbl_comment.js";
 
 const bbsModel = mongoose.Schema({
   b_date: String,
@@ -12,6 +13,16 @@ const bbsModel = mongoose.Schema({
   b_subject: String,
   b_content: String,
   b_count: Number,
+  /**
+   * bbs Model 에 comment Model 을
+   * Sub Document 배열 형식으로 추가하여
+   * 1:N 의 table 연관(Association) 관계를 설정
+   * RDBMS 에서는 2개의 table 을 생성하고
+   * 각각의 table 을 JOIN 하는 연관 관계를 생성한다.
+   * 하지만 mongoDB 에서는 Model 선언부만 별도로 만들 뿐
+   * 실제 데이터는 tbl_bbs Collection 에 함께 저장된다.
+   */
+  b_comments: [commentModel],
 });
 /**
  * bbsModel 에 설정된 칼럼 정보를 사용하여

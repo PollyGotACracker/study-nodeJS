@@ -1,6 +1,7 @@
 extends layout 
 
 block content
+    link(rel="stylesheet", href="/css/write.css")
     script(src="/js/write.js")
     section.bbs.write
         form(method="POST").bbs.write
@@ -25,4 +26,4 @@ block content
                 div.bbs.write.button.box 
                     button(type="button").bbs.input 저장
                     button(type="button").bbs.list 리스트로
-                div.bbs.msg
+                span.bbs.msg
