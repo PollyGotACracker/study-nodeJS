@@ -23,9 +23,12 @@ block content
             button.bbs.delete 삭제
             button.bbs.list 리스트로 
         div.bbs.comments
+            div.comments.title COMMENTS
             div.comments.item
                 each comment in bbs.b_comments
-                    p= `${comment.ct_writer}.. ${comment.ct_comment}`
+                    div.avatar
+                    p= `${comment.ct_writer}: ${comment.ct_comment}`
             div.comments.input
-                input()#b_comment
+                div.msg
+                input(placeholder="댓글 입력...")#b_comment
                 button.comment.add 댓글추가

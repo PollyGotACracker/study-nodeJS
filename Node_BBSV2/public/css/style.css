@@ -3,21 +3,41 @@
   padding: 0;
   margin: 0;
   font-size: 12pt;
+  font-family: "NanumBarunpen";
 }
-html {
-  width: 100%;
+@font-face {
+  font-family: "NanumBarunpen";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "EliceDigitalBaeum-Bd";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_elice@1.0/EliceDigitalBaeum-Bd.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
 }
 body {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn ease-in-out 0.3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 section {
   width: 90%;
   height: 90%;
   padding: 2%;
-  margin-top: 2%;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,21 +45,26 @@ section {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+.button.box {
+  margin-top: 20px;
+}
 button {
+  font-family: "EliceDigitalBaeum-Bd";
   border: none;
   outline: none;
   white-space: nowrap;
   width: 120px;
   padding: 15px 0;
-  border-radius: 5px;
-  font-size: 12pt;
+  border-radius: 50px;
+  font-size: 14pt;
   font-weight: 700;
   cursor: pointer;
   background-color: #333;
   color: white;
+  transition: all ease 0.2s;
 }
 button:hover {
-  background-color: #aaa;
+  background-color: #3d65db;
 }
 input,
 textarea {

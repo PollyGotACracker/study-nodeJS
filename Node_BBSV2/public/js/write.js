@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 
   const chkValue = () => {
-    const dateRegExp = /^20\d\d-[0-1][1-9]-[0-5][0-9]/g;
+    const dateRegExp = /^20\d\d-[0-1][1-9]-[0-5][0-9]$/g;
     // const dateRegExp =
     //   /^20\d\d-[0-1][1-9]-[0-5][0-9]\s(일|월|화|수|목|금|토)요일/g;
     const timeRegExp =
-      /^[0-1][0-9]:[0-5][0-9]:[0-5][0-9]|^2[0-3]:[0-5][0-9]:[0-5][0-9]/g;
+      /^[0-1][0-9]:[0-5][0-9]:[0-5][0-9]$|^2[0-3]:[0-5][0-9]:[0-5][0-9]$/g;
 
     for (let input of inputArr) {
       let value = input.value;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
       }
       if (input.title === "작성일자" && value.match(dateRegExp) === null) {
-        msg.textContent = `작성일자 형식은 20yy-mm-dd ?요일 입니다.`;
+        msg.textContent = `작성일자 형식은 20yy-mm-dd 입니다.`;
         input.focus();
         return false;
       }

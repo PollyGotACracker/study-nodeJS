@@ -1,3 +1,8 @@
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
 form.bbs.write,
 form.bbs.write fieldset {
   width: 100%;
@@ -16,6 +21,7 @@ form.bbs.write div:not(.bbs.write.button.box) {
 }
 form.bbs.write div:not(.bbs.write.button.box) label {
   font-weight: 700;
+  font-size: 14pt;
   display: inline-block;
   white-space: nowrap;
   width: 120px;
@@ -34,14 +40,16 @@ form.bbs.write div textarea {
   width: 70%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .bbs.write.button.box > button {
   margin-right: 10px;
 }
 .bbs.msg {
   display: inline-block;
-  width: 70%;
-  padding: 10px;
-  text-align: right;
+  width: 200px;
+  margin-right: 10px;
+  font-size: 15pt;
   font-weight: 700;
+  color: rgb(246, 71, 71);
 }

@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   bbsCommentAdd?.addEventListener("click", () => {
     const comment = bbsCommentInput?.value;
     if (!comment) {
-      alert("댓글을 먼저 입력하세요");
+      doc.querySelector(".comments.input .msg").textContent =
+        "댓글을 입력하세요.";
       bbsCommentInput.select();
       return false;
     }
@@ -30,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetch("/comment/add", fetchOption)
       // fetch 가 성공적으로 수행되고 server 에서 req 가 오면
-      // then() 함수가 호출되고 res 변수에 서버에서 보낸
-      // Response 정보가 담겨있다.
+      // then() 함수가 호출된다.
+      // res 변수에는 서버에서 보낸 Response 정보가 담겨있다.
       // Response 정보 중에서 우리가 필요한 것은
       // json type 의 데이터 뿐이다.
-      // res 에서 json 을 추출하여 다음 then 함수에게 전달한다.
-      // .then((res)=>{return res.json()})
+      // res 에서 json 을 추출하여  res.json()
+      // 다음 then 함수에게 전달한다.  .then((res)=>{return res.json()})
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
@@ -44,12 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // map 을 사용하여 댓글 개수만큼의 pTag 를 만들기
         // 생성된 pTag 는 pTagList 배열에 담긴다
         const pTagList = commentList.map((cmm) => {
-          const pTag = document.createElement("p");
+          const pTag = document.createElement("P");
           pTag.textContent = `${cmm.ct_writer}..${cmm.ct_comment}`;
           return pTag;
         });
         cmmBox.textContent = "";
         // pTagList 배열을 cmmBox 에 한꺼번에 append 하기
+        // spread syntax 사용
         cmmBox.append(...pTagList);
       });
   });
@@ -73,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
     } // end switch
     document.location.href = URL;
-  };
+  }; // end clickEvent
 
   bbsUpdate.addEventListener("click", clickEvent);
   bbsDelete.addEventListener("click", clickEvent);

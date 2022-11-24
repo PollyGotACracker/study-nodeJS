@@ -1,7 +1,6 @@
 import express from "express";
 import BBS from "../models/tbl_bbs.js";
 import moment from "moment";
-
 const dateFormat = "YYYY-MM-DD";
 const timeFormat = "HH:mm:ss";
 
@@ -21,7 +20,6 @@ router.get("/", async (req, res) => {
 
 router.get("/insert", (req, res) => {
   const bbs = new BBS();
-
   // moment 를 사용하여 현재 날짜 시각을
   // 지정한 format 형식의 문자열로 만들어서
   // 각각 b_date, b_time 칼럼에 추가하라
@@ -32,7 +30,6 @@ router.get("/insert", (req, res) => {
 
 router.post("/insert", async (req, res) => {
   const newBBS = new BBS(req.body);
-
   try {
     await newBBS.save();
     res.redirect("/");
@@ -107,7 +104,7 @@ router.put("/comment/add", async (req, res) => {
     await bbs.save();
     return res.json(bbs);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     return res.send(err);
   }
 });
