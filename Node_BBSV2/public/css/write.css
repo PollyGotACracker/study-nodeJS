@@ -19,6 +19,9 @@ form.bbs.write div:not(.bbs.write.button.box) {
   align-items: center;
   justify-content: center;
 }
+form.bbs.write div:nth-of-type(5) {
+  height: 100%;
+}
 form.bbs.write div:not(.bbs.write.button.box) label {
   font-weight: 700;
   font-size: 14pt;
@@ -32,9 +35,10 @@ form.bbs.write div textarea {
   padding: 8px;
   border-radius: 5px;
   width: 90%;
+  font-size: 12pt;
 }
 form.bbs.write div textarea {
-  height: 50vh;
+  height: 100%;
 }
 .bbs.write.button.box {
   width: 70%;
@@ -47,9 +51,10 @@ form.bbs.write div textarea {
 }
 .bbs.msg {
   display: inline-block;
-  width: 200px;
+  width: 300px;
   margin-right: 10px;
   font-size: 15pt;
   font-weight: 700;
   color: rgb(246, 71, 71);
+  word-break: keep-all;
 }

@@ -3,6 +3,10 @@ block content
   link(rel="stylesheet", href="/css/index.css")
   script(src="/js/list.js")
   section.bbs.index
+    form.bbs.search
+      input(placeholder="게시글 검색").search
+      button(type="button").search
+        span(class="material-symbols-rounded") search
     table.bbs.list 
       thead
         tr
@@ -17,12 +21,14 @@ block content
             td= bbs.b_time
             td= bbs.b_writer
             td= bbs.b_subject
-          each cmm in bbs.b_comments
-            tr 
-              td  
-              td
-              td= cmm.ct_writer
-              td ↳ #{cmm.ct_comment}
+          //- each cmm in bbs.b_comments
+          //-   tr 
+          //-     td  
+          //-     td
+          //-     td= cmm.ct_writer
+          //-     td 
+          //-       span(class="material-symbols-rounded") subdirectory_arrow_right
+          //-       span #{cmm.ct_comment}
                 
     div.bbs.button.box
       button.bbs.insert 추가

@@ -3,6 +3,28 @@ body {
   width: 100vw;
   height: 100vh;
 }
+form.bbs.search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+form.bbs.search input.search {
+  font-size: 12pt;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  width: 20%;
+  padding: 1% 1% 5px 1%;
+}
+form.bbs.search button.search {
+  width: 50px;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  background-color: transparent;
+}
+span[class="material-symbols-rounded"] {
+  color: #aaa;
+}
 table.bbs.list {
   width: 100%;
   border-collapse: collapse;
@@ -40,13 +62,6 @@ table.bbs.list tbody td:not(:nth-of-type(4)) {
 }
 table.bbs.list tbody td:nth-of-type(4) {
   padding-left: 5%;
-}
-table.bbs.list tbody tr:not([data-id]) td:nth-of-type(4) {
-  padding-left: 100px;
-  color: #aaa;
-}
-table.bbs.list tbody tr:not([data-id]) {
-  border-bottom: 1px dashed #aaa;
 }
 .bbs.button.box {
   align-self: flex-end;

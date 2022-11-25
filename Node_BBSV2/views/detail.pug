@@ -22,13 +22,25 @@ block content
             button.bbs.update 수정
             button.bbs.delete 삭제
             button.bbs.list 리스트로 
-        div.bbs.comments
+
+        article.bbs.comments
             div.comments.title COMMENTS
-            div.comments.item
-                each comment in bbs.b_comments
-                    div.avatar
-                    p= `${comment.ct_writer}: ${comment.ct_comment}`
+            div.comments.box
+                each comm in bbs.b_comments
+                    //- div.avatar
+                    p.comment.list.box
+                        span.comment.writer= `${comm.ct_writer || 익명}`
+                        span.comment.content= comm.ct_comment
+                        //- 댓글의 id 를 dataset 으로 설정
+                        span.comment.delete(data-id=`${comm.id}`) &times;
             div.comments.input
                 div.msg
-                input(placeholder="댓글 입력...")#b_comment
-                button.comment.add 댓글추가
+                div.comment.input.box
+                    input(placeholder="댓글 입력...").comment
+                    button.comment 댓글추가
+        div.modalbox
+            div.modal.msg 정말 이 게시글을 삭제할까요?
+            div.modal.button.box
+                button.modal.cancel 취소
+                button.modal.delete 삭제
+    div.blur

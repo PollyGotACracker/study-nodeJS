@@ -6,6 +6,7 @@ article.bbs.detail {
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr 2fr);
+  position: relative;
 }
 article.bbs.detail div {
   padding: 10px;
@@ -50,7 +51,7 @@ article.bbs.detail div:nth-of-type(10) {
 .bbs.detail.button.box > button {
   margin-right: 10px;
 }
-.bbs.comments {
+article.bbs.comments {
   width: 100%;
   margin: 20px 0 auto;
   padding: 5px;
@@ -59,36 +60,37 @@ article.bbs.detail div:nth-of-type(10) {
   align-items: center;
   border-top: 1px dashed #aaa;
 }
-.bbs.comments .comments.title {
-  align-self: flex-start;
-  font-weight: 900;
-  font-size: 15pt;
-  padding: 1.2em;
+.comments.box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.comments.item {
+p.comment.list.box {
+  display: flex;
+  width: 80%;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  padding: 1%;
+  margin: 5px;
+  position: relative;
+}
+/* .comments.item {
   width: 90%;
   display: grid;
   grid-template-columns: 0.8fr 9.2fr;
   justify-items: center;
   align-items: center;
-}
-.comments.item .avatar {
+} */
+/* p.comment.list.box .avatar {
   display: inline-block;
   width: 50px;
   height: 50px;
   margin-right: 5px;
   border-radius: 50%;
   background-color: #181818;
-}
-.comments.item p {
-  width: 100%;
-  border: 1px solid #181818;
-  border-radius: 20px;
-  padding: 2%;
-  margin: 5px;
-  position: relative;
-}
-.comments.item p:before {
+} */
+/* p.comment.list.box:before {
   position: absolute;
   left: -20px;
   top: calc(50% - 10px);
@@ -99,12 +101,51 @@ article.bbs.detail div:nth-of-type(10) {
   border-left: 10px solid transparent;
   border-right: 10px solid #181818;
 }
+*/
+span.comment {
+  flex: 8;
+  padding: 5px;
+  line-height: 20px;
+}
+span.comment.writer {
+  flex: 1 !important;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 700;
+}
+span.comment.content {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+span.comment.delete {
+  flex: 1;
+  color: rgb(246, 71, 71);
+  text-align: center;
+  cursor: pointer;
+  /* 1em: 주위의 폰트 크기와 1:1, 2em: 2배 만큼 크게 */
+  font-size: 2em;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+
+/*
+comment list 가 있는 p box 에 hover 가 되면
+span tag 에 속성 지정
+*/
+p.comment.list.box:hover span.comment.delete {
+  opacity: 1;
+}
+.bbs.comments .comments.title {
+  align-self: flex-start;
+  font-weight: 900;
+  font-size: 15pt;
+  padding: 1.2em;
+}
 .comments.input {
   width: 90%;
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 9fr 1fr;
   justify-items: flex-end;
+  align-items: flex-end;
 }
 .comments.input .msg {
   width: 100%;
@@ -115,15 +156,94 @@ article.bbs.detail div:nth-of-type(10) {
   font-weight: 700;
   color: rgb(246, 71, 71);
 }
-.comments.input input#b_comment {
+.comment.input.box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.comments.input input.comment {
   border: none;
   border-bottom: 2px solid #aaa;
-  padding: 5px;
-  width: 88%;
-  margin-right: 25px;
-  margin-bottom: 5px;
+  padding: 1% 1% 5px 1%;
+  width: 70%;
+  height: 100%;
   transition: all ease 0.3s;
+  font-size: 12pt;
 }
-.comments.input input#b_comment:focus {
+.comments.input input.comment:focus {
   border-bottom-color: #3d65db;
+}
+.comments.input button.comment {
+  margin-left: 10px;
+  border: 3px solid #aaa;
+  background-color: transparent;
+  color: #aaa;
+}
+.comments.input button.comment:hover {
+  color: #3d65db;
+  border-color: #3d65db;
+}
+.modalbox {
+  position: absolute;
+  top: calc(50% - 13%);
+  left: calc(50% - 13%);
+  background-color: #181818;
+  width: 26%;
+  height: 26%;
+  border-radius: 5px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 15pt;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4% 1%;
+  z-index: -998;
+  opacity: 0.5;
+  transform: scale(0);
+  transform-origin: center;
+  transition: all ease-in-out 0.3s;
+}
+.modalbox .modal.msg {
+  width: 100%;
+  word-break: keep-all;
+}
+.modal.button.box {
+  display: flex;
+  width: 10%;
+  justify-content: space-around;
+}
+.modal.button.box > button:nth-of-type(2):hover {
+  background-color: rgb(246, 71, 71);
+}
+
+.modalbox > * {
+  display: none;
+}
+.modal.button.box {
+  width: 100%;
+}
+.modalbox.open {
+  z-index: 999;
+  opacity: 1;
+  transform: scale(1);
+}
+.modalbox.open > * {
+  display: block;
+}
+.blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+}
+.blur.active {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 }

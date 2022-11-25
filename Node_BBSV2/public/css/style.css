@@ -1,10 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-size: 12pt;
-  font-family: "NanumBarunpen";
-}
 @font-face {
   font-family: "NanumBarunpen";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff")
@@ -19,19 +12,35 @@
   font-weight: normal;
   font-style: normal;
 }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "NanumBarunpen";
+}
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: fadeIn ease-in-out 0.3s;
+  animation: 6s ease alternate infinite bgMove;
+  font-size: 12pt;
+  background-image: linear-gradient(160deg, #373b44 0%, #4286f4 100%);
+  background-size: 100% 300%;
+  background-position: top bottom;
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+@keyframes bgMove {
+  50% {
+    background-position: center;
   }
-  100% {
-    opacity: 1;
-  }
+}
+header {
+  width: 100%;
+  padding: 2%;
+  text-align: center;
+}
+header h1 {
+  font-family: "EliceDigitalBaeum-Bd";
 }
 section {
   width: 90%;
@@ -44,27 +53,48 @@ section {
   align-items: center;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
+  animation: 0.5s ease-in-out fadeIn;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .button.box {
   margin-top: 20px;
 }
 button {
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+button:not(form.bbs.search .search) {
   font-family: "EliceDigitalBaeum-Bd";
   border: none;
   outline: none;
   white-space: nowrap;
-  width: 120px;
-  padding: 15px 0;
+  width: 100px;
+  padding: 10px 0;
   border-radius: 50px;
   font-size: 14pt;
   font-weight: 700;
-  cursor: pointer;
   background-color: #333;
   color: white;
-  transition: all ease 0.2s;
 }
 button:hover {
   background-color: #3d65db;
+  animation: 0.5s alternate infinite twinkle;
+}
+@keyframes twinkle {
+  from {
+    text-shadow: 0 0 0 white;
+  }
+  to {
+    text-shadow: 0 0 8px white;
+  }
 }
 input,
 textarea {
