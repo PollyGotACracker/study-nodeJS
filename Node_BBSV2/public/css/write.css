@@ -1,8 +1,3 @@
-body {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
 form.bbs.write,
 form.bbs.write fieldset {
   width: 100%;

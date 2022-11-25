@@ -1,8 +1,3 @@
-body {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
 form.bbs.search {
   width: 100%;
   display: flex;
@@ -21,6 +16,9 @@ form.bbs.search button.search {
   border: 0;
   border-bottom: 1px solid #aaa;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 span[class="material-symbols-rounded"] {
   color: #aaa;
@@ -30,7 +28,6 @@ table.bbs.list {
   border-collapse: collapse;
 }
 table.bbs.list thead th {
-  font-family: "EliceDigitalBaeum-Bd";
   padding: 10px 0;
   border-bottom: 2px solid #181818;
   font-size: 15pt;
@@ -65,6 +62,5 @@ table.bbs.list tbody td:nth-of-type(4) {
 }
 .bbs.button.box {
   align-self: flex-end;
-  margin-top: 20px;
   margin-top: auto;
 }

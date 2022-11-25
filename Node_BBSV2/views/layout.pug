@@ -6,6 +6,24 @@ html
     link(rel='stylesheet', href='/css/style.css')
     script(src="/js/main.js")
   body
-    header
-      h1 BBS 2022
-    block content
+    div.cloud
+    div.container
+      nav 
+        ul 
+          li 표지
+          li 달력
+          li 일기
+          li 갤러리
+          li 방명록
+      aside.sidebar
+        div.sidebar.content
+          header
+            h1 안녕하세요
+          div.clock
+            div.hour
+            div.minute
+            div.second
+          div.counter
+            div.count.today Today 12
+            div.count.total Total 550
+      block content

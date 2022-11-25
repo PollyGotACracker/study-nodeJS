@@ -32,7 +32,7 @@ block content
                         span.comment.writer= `${comm.ct_writer || 익명}`
                         span.comment.content= comm.ct_comment
                         //- 댓글의 id 를 dataset 으로 설정
-                        span.comment.delete(data-id=`${comm.id}`) &times;
+                        span.comment.delete(data-id=`${comm.id}`, class="material-symbols-rounded") close
             div.comments.input
                 div.msg
                 div.comment.input.box

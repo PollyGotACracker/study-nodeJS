@@ -185,11 +185,11 @@ p.comment.list.box:hover span.comment.delete {
 }
 .modalbox {
   position: absolute;
-  top: calc(50% - 13%);
-  left: calc(50% - 13%);
+  top: calc(50% - 15%);
+  left: calc(50% - 20%);
   background-color: #181818;
-  width: 26%;
-  height: 26%;
+  width: 40%;
+  height: 30%;
   border-radius: 5px;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
   color: white;
@@ -216,7 +216,11 @@ p.comment.list.box:hover span.comment.delete {
   width: 10%;
   justify-content: space-around;
 }
-.modal.button.box > button:nth-of-type(2):hover {
+.modal.button.box button.modal.cancel,
+.modal.button.box button.modal.delete {
+  color: #faf9f7;
+}
+.modal.button.box button.modal.delete:hover {
   background-color: rgb(246, 71, 71);
 }
 

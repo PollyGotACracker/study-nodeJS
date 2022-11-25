@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // 댓글 리스트 화면에 보여주기
           commentListView(json.b_comments);
           // bbsCommentInput.value="";
-          bbsCommentInput.select();
+          bbsCommentInput.value = "";
         });
     }
   });
