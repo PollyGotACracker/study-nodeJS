@@ -43,16 +43,16 @@ table.bbs.list thead th:not(:nth-of-type(4)) {
 table.bbs.list tbody td {
   padding: 10px 0;
 }
-table.bbs.list tbody tr[data-id] {
+table.bbs.list tbody tr {
   transition: all ease 0.2s;
   border-bottom: 1px solid #aaa;
+  cursor: pointer;
 }
-table.bbs.list tbody tr[data-id]:nth-of-type(n - 1) {
+table.bbs.list tbody tr:nth-of-type(n - 1) {
   border-top: 1px solid #aaa;
 }
-table.bbs.list tbody tr[data-id]:hover {
+table.bbs.list tbody tr:hover {
   background-color: #eee;
-  cursor: pointer;
 }
 table.bbs.list tbody td:not(:nth-of-type(4)) {
   text-align: center;

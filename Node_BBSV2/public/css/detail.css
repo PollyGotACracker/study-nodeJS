@@ -1,12 +1,8 @@
-body {
-  position: relative;
-}
 article.bbs.detail {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr 2fr);
-  position: relative;
 }
 article.bbs.detail div {
   padding: 10px;
@@ -20,13 +16,15 @@ forEach() 처럼 작동된다
 n + 5: 
 0번부터 시작하여 5번 위치와 6번 위치의 div.label 에 속성 지정
 */
-.label:nth-of-type(n + 6) {
-  background-color: #eee;
-}
+
 article.bbs.detail .label {
   justify-content: center;
   font-size: 14pt;
   font-weight: 700;
+  word-break: keep-all;
+}
+.label:nth-of-type(n + 6) {
+  background-color: #eee;
 }
 article.bbs.detail div:not(:nth-last-of-type(1)) {
   display: flex;
@@ -182,72 +180,4 @@ p.comment.list.box:hover span.comment.delete {
 .comments.input button.comment:hover {
   color: #3d65db;
   border-color: #3d65db;
-}
-.modalbox {
-  position: absolute;
-  top: calc(50% - 15%);
-  left: calc(50% - 20%);
-  background-color: #181818;
-  width: 40%;
-  height: 30%;
-  border-radius: 5px;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 15pt;
-  font-weight: 700;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 4% 1%;
-  z-index: -998;
-  opacity: 0.5;
-  transform: scale(0);
-  transform-origin: center;
-  transition: all ease-in-out 0.3s;
-}
-.modalbox .modal.msg {
-  width: 100%;
-  word-break: keep-all;
-}
-.modal.button.box {
-  display: flex;
-  width: 10%;
-  justify-content: space-around;
-}
-.modal.button.box button.modal.cancel,
-.modal.button.box button.modal.delete {
-  color: #faf9f7;
-}
-.modal.button.box button.modal.delete:hover {
-  background-color: rgb(246, 71, 71);
-}
-
-.modalbox > * {
-  display: none;
-}
-.modal.button.box {
-  width: 100%;
-}
-.modalbox.open {
-  z-index: 999;
-  opacity: 1;
-  transform: scale(1);
-}
-.modalbox.open > * {
-  display: block;
-}
-.blur {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -999;
-}
-.blur.active {
-  display: block;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 998;
 }
