@@ -1,0 +1,66 @@
+form.bbs.search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+form.bbs.search input.search {
+  font-size: 12pt;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  width: 20%;
+  padding: 1% 1% 5px 1%;
+}
+form.bbs.search button.search {
+  width: 50px;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span[class="material-symbols-rounded"] {
+  color: #aaa;
+}
+table.bbs.list {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.bbs.list thead th {
+  padding: 10px 0;
+  border-bottom: 2px solid #181818;
+  font-size: 15pt;
+  font-weight: 700;
+  border-radius: 5px;
+}
+table.bbs.list thead th:nth-of-type(4) {
+  width: 50%;
+}
+table.bbs.list thead th:not(:nth-of-type(4)) {
+  width: calc(50% / 3);
+}
+table.bbs.list tbody td {
+  padding: 10px 0;
+}
+table.bbs.list tbody tr {
+  transition: all ease 0.2s;
+  border-bottom: 1px solid #aaa;
+  cursor: pointer;
+}
+table.bbs.list tbody tr:nth-of-type(n - 1) {
+  border-top: 1px solid #aaa;
+}
+table.bbs.list tbody tr:hover {
+  background-color: #eee;
+}
+table.bbs.list tbody td:not(:nth-of-type(4)) {
+  text-align: center;
+}
+table.bbs.list tbody td:nth-of-type(4) {
+  padding-left: 5%;
+}
+.bbs.button.box {
+  align-self: flex-end;
+  margin-top: auto;
+}

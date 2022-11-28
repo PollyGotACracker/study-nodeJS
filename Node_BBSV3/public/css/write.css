@@ -1,0 +1,55 @@
+form.bbs.write,
+form.bbs.write fieldset {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form.bbs.write div:not(.bbs.write.button.box) {
+  width: 70%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form.bbs.write div:nth-of-type(5) {
+  height: 100%;
+}
+form.bbs.write div:not(.bbs.write.button.box) label {
+  font-weight: 700;
+  font-size: 14pt;
+  display: inline-block;
+  white-space: nowrap;
+  width: 120px;
+}
+form.bbs.write div input,
+form.bbs.write div textarea {
+  border: 1px solid #aaa;
+  padding: 8px;
+  border-radius: 5px;
+  width: 90%;
+  font-size: 12pt;
+}
+form.bbs.write div textarea {
+  height: 100%;
+}
+.bbs.write.button.box {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.bbs.write.button.box > button {
+  margin-right: 10px;
+}
+.bbs.msg {
+  display: inline-block;
+  width: 300px;
+  margin-right: 10px;
+  font-size: 15pt;
+  font-weight: 700;
+  color: rgb(246, 71, 71);
+  word-break: keep-all;
+}
