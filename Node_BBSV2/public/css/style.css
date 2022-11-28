@@ -158,14 +158,18 @@ aside.sidebar:after {
   flex-direction: column;
   align-items: center;
 }
+.sidebar.content > * {
+  margin: 5% 0;
+}
 
 header {
   width: 100%;
-  padding: 2%;
+  padding: 1.2em;
+  text-align: center;
 }
 header h1 {
-  text-align: center;
-  font-size: 20pt;
+  display: inline-block;
+  font-size: 25pt;
   color: #181818;
 }
 .clock {
@@ -187,6 +191,36 @@ header h1 {
   background: white;
   border-radius: 5px;
 } */
+
+form.login,
+form.login .input_box {
+  width: 100%;
+}
+form.login fieldset {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 10px;
+}
+form.login .input_box {
+  display: flex;
+  align-items: center;
+}
+form.login .input_box label {
+  flex: 2;
+  white-space: nowrap;
+}
+form.login .input_box input {
+  flex: 5;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  padding: 1%;
+}
+button#login {
+  padding: 2px;
+  width: 80px;
+  float: right;
+  margin-top: 10pt;
+}
 
 .button.box {
   margin-top: 20px;

@@ -66,7 +66,7 @@ article.bbs.comments {
 }
 p.comment.list.box {
   display: flex;
-  width: 80%;
+  width: 90%;
   border: 1px solid #aaa;
   border-radius: 20px;
   padding: 1%;
@@ -158,17 +158,25 @@ p.comment.list.box:hover span.comment.delete {
   width: 100%;
   display: flex;
   justify-content: center;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  padding: 20px;
 }
-.comments.input input.comment {
+.comments.input input {
   border: none;
   border-bottom: 2px solid #aaa;
   padding: 1% 1% 5px 1%;
-  width: 70%;
-  height: 100%;
   transition: all ease 0.3s;
   font-size: 12pt;
 }
-.comments.input input.comment:focus {
+.comments.input input.writer {
+  width: 20%;
+  margin-right: 15px;
+}
+.comments.input input.comment {
+  width: 70%;
+}
+.comments.input input:focus {
   border-bottom-color: #3d65db;
 }
 .comments.input button.comment {

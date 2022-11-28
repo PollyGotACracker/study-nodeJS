@@ -18,6 +18,15 @@ html
             div.hour
             div.minute
             div.second
+          form(method="GET").login
+            fieldset
+              div.input_box
+                label(for="username") 아이디
+                input#username(name="username",type="text")
+              div.input_box
+                label(for="password") 비밀번호
+                input#password(name="password",type="password")
+              button(type="button")#login 로그인 
           div.counter
             div.count.today Today 12
             div.count.total Total 550

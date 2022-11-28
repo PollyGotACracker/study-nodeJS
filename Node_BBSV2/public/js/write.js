@@ -66,6 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
   btnInput?.addEventListener("click", () => {
     // 유효성 검사 후
     if (chkValue()) {
+      let text = textarea.value;
+      console.log(text);
+      const textRegex = /\r|\n|\r\n/g;
+      text = text.replaceAll(textRegex, "<br />");
+      console.log(text);
       formInput?.submit();
     }
   });
