@@ -1,0 +1,43 @@
+.post_box {
+  border: 1px solid #aaa;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+.post_box .title,
+.post_box .desc,
+.post_box .content {
+  width: 100%;
+}
+.post_box .title {
+  padding: 1.5em;
+  border-bottom: 1px solid #aaa;
+}
+.post_box .title h2 {
+  font-weight: 700;
+}
+.post_box .desc {
+  text-align: right;
+  padding: 0.4em;
+}
+.post_box .desc > * {
+  margin: 0 5px;
+  color: #333;
+}
+.post_box .desc .tags > * {
+  display: inline-block;
+  margin: 0 2px;
+  background-color: #181818;
+  border-radius: 50px;
+  padding: 0.5em;
+  width: 60px;
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.post_box .content {
+  height: 20vh;
+  margin: 10px;
+  padding: 2%;
+}

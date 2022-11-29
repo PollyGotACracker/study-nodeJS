@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const commentId = span.dataset.id;
         // alert(commentId);
         // 서버에 DELETE RequestMethod 를 사용하여 데이터 삭제 요청
-        fetch(`/comment/${id}/${commentId}`, { method: "DELETE" })
+        fetch(`/board/comment/${id}/${commentId}`, { method: "DELETE" })
           .then((res) => res.json())
           .then((json) => {
             commentListView(json.b_comments);
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(commentData), // 서버로 보낼 데이터
         headers: { "Content-Type": "application/json" }, // 보낼 데이터 형식(json)
       };
-      fetch("/comment/add", fetchOption)
+      fetch("/board/comment/add", fetchOption)
         // fetch 가 성공적으로 수행되고 server 에서 req 가 오면
         // then() 함수가 호출된다.
         // res 변수에는 서버에서 보낸 Response 정보가 담겨있다.
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.close();
   });
   modalDelete?.addEventListener("click", () => {
-    document.location.href = `/delete/${id}`;
+    document.location.href = `/board/delete/${id}`;
   });
 
   const clickEvent = (e) => {
@@ -128,14 +128,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let URL = "/";
     switch (btnName) {
       case "수정":
-        URL = `/update/${id}`;
+        URL = `/board/update/${id}`;
         break;
       case "삭제":
         modal.open();
         return false;
-        break;
       case "리스트로":
-        URL = "/";
+        URL = "/board";
         break;
     } // end switch
     document.location.href = URL;

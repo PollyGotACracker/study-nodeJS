@@ -19,7 +19,12 @@ import { atlasURL } from "../config/mongoDB.js";
 
 // sample router modules
 import indexRouter from "../routes/index.js";
-import usersRouter from "../routes/users.js";
+// import usersRouter from "../routes/users.js";
+import scheduleRouter from "../routes/schedule.js";
+import listRouter from "../routes/list.js";
+import postsRouter from "../routes/posts.js";
+import boardRouter from "../routes/board.js";
+import galleryRouter from "../routes/gallery.js";
 
 // create express framework
 const app = express();
@@ -61,7 +66,12 @@ app.use(express.static(path.join("public")));
 
 // router link enable
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// app.use("/users", usersRouter);
+app.use("/schedule", scheduleRouter);
+app.use("/list", listRouter);
+app.use("/posts", postsRouter);
+app.use("/board", boardRouter);
+app.use("/gallery", galleryRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

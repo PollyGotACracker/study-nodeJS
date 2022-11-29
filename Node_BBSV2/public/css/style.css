@@ -229,7 +229,7 @@ button {
   cursor: pointer;
   transition: all ease 0.2s;
 }
-button:not(form.bbs.search .search) {
+button {
   border: none;
   outline: none;
   white-space: nowrap;
@@ -244,6 +244,21 @@ button:not(form.bbs.search .search) {
 }
 button:hover {
   border-color: #27334c;
+}
+.pagination {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pagination button[class*="pg"] {
+  width: 60px;
+  margin: 0 5px;
+  border: 0;
+  background-color: #ccc;
+}
+.pagination button[class*="pg"]:hover {
+  background-color: #aaa;
 }
 input,
 textarea {

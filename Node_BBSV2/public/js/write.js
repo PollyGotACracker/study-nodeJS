@@ -75,6 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   btnList?.addEventListener("click", () => {
-    document.location.href = "/";
+    document.location.href = "/board";
   });
 });
