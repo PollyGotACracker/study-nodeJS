@@ -1,3 +1,16 @@
 extends layout
 block content
+    link(rel="stylesheet", href="/css/index.css")
     section.index
+        div.image_slide
+        div.greeting 안녕하세요!
+        div.members
+            mixin box(name)
+                div.members_box
+                    div.avatar
+                    div.name= name
+            +box('polly')
+            +box('cracker')
+            +box('millet')
+            +box('noodle')
+            +box('sunflower')

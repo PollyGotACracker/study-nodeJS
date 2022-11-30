@@ -3,11 +3,13 @@ html
   head
     title 안녕하세요
     link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0")
-    link(rel='stylesheet', href='/css/style.css')
-    link(rel="stylesheet",href="/css/stars.css")
+    link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/stars.css")
     script(src="/js/main.js")
-    script(src="js/nav.js")
+    script(src="/js/nav.js")
     script(src="/js/stars.js")
+    - let todayCount = 12;
+    - let totalCount = 550;
   body
     div.cloud
     div.container
@@ -19,6 +21,15 @@ html
             div.hour
             div.minute
             div.second
+          div.player MUSIC PLAYER
+            div.player.button_box
+            div.player.list
+              ul 
+                li 
+                li 
+                li 
+                li 
+                li   
           form(method="GET").login
             fieldset
               div.input_box
@@ -29,8 +40,10 @@ html
                 input#password(name="password",type="password")
               button(type="button")#login 로그인 
           div.counter
-            div.count.today Today 12
-            div.count.total Total 550
+            div.count.today Today 
+              span= todayCount
+            div.count.total Total 
+              span= totalCount
       block content
       nav 
         ul 

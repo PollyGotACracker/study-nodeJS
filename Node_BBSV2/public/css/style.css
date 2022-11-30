@@ -21,7 +21,6 @@ body {
   align-items: center;
   animation: 120s ease alternate infinite bgMove;
   font-size: 12pt;
-  background-image: linear-gradient(160deg, #373b44 0%, #111d30 100%);
   background-size: 500% 100%;
   background-position: top left;
   position: relative;
@@ -253,14 +252,52 @@ button:hover {
   display: flex;
   justify-content: center;
 }
+
 .pagination button[class*="pg"] {
-  width: 60px;
+  height: 2em;
   margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination button[class*="pg_0"]:hover {
+  background-color: #aaa;
+}
+.pagination button[class*="pg_0"] {
+  width: 2em;
   border: 0;
   background-color: #ccc;
 }
-.pagination button[class*="pg"]:hover {
-  background-color: #aaa;
+.pagination button[class="pg_next"] {
+  width: 3em;
+}
+
+form.bbs.search {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+form.bbs.search input.search {
+  font-size: 12pt;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  width: 20%;
+  padding: 1% 1% 5px 1%;
+}
+form.bbs.search button.search {
+  width: 50px;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px solid #aaa;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span[class="material-symbols-rounded"] {
+  color: #aaa;
 }
 input,
 textarea {
@@ -268,6 +305,7 @@ textarea {
   background-color: transparent;
   caret-color: #3950a0;
 }
+
 .modalbox {
   position: absolute;
   top: calc(50% - 15%);

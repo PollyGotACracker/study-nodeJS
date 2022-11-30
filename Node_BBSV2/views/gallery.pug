@@ -2,13 +2,18 @@ extends layout
 block content
     link(rel="stylesheet", href="/css/gallery.css")
     section.gallery
+        form.bbs.search
+            input(placeholder="게시글 검색").search
+            button(type="button").search
+                span(class="material-symbols-rounded") search
+        button.gallery.add 추가
         div.gallery.img_container
             mixin box
                 div.img_box
                     div.thumb
                     div.title 제목
                     span.date 2022-11-29 화
-                    span.time 오전 09:00
+                    span.desc 설명입니다.
             +box
             +box
             +box
@@ -23,4 +28,4 @@ block content
             button.pg_03 3
             button.pg_04 4
             button.pg_05 5
-            button(type="button") next
+            button(type="button").pg_next next

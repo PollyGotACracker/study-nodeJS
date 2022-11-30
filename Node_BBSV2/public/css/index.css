@@ -1,0 +1,32 @@
+.image_slide {
+  width: 100%;
+  height: 60%;
+  background-color: #181818;
+}
+.greeting {
+  display: inline-block;
+  width: 60%;
+  text-align: center;
+  border-bottom: 1px dotted #aaa;
+}
+.members {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.members .members_box {
+  width: calc(100% / 5);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.members_box .avatar {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: #181818;
+}

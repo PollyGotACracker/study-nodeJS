@@ -68,6 +68,7 @@ router.post("/update/:id", async (req, res) => {
     return res.json(err);
   }
 });
+
 router.get("/delete/:id", async (req, res) => {
   const id = req.params.id;
   try {

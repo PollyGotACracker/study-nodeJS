@@ -1,0 +1,35 @@
+.lists_container {
+  width: 90%;
+}
+.list_box {
+  width: 100%;
+  border-bottom: 1px dotted #aaa;
+  display: flex;
+  align-items: center;
+  padding: 0.5em 2em;
+}
+.list_box:hover {
+  background-color: #aaa;
+  cursor: pointer;
+}
+.list_box .list.color {
+  width: 1em;
+  height: 1em;
+  background-color: red;
+  border-radius: 50%;
+}
+.list_box .list.content {
+  flex: 1;
+  padding: 0 3em;
+}
+.list_box .list.delete:hover {
+  color: red;
+}
+.input_box {
+  width: 100%;
+}
+.input_box input.list.write {
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+}

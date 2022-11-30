@@ -21,7 +21,7 @@
   font-weight: 700;
 }
 .post_box .desc {
-  text-align: right;
+  display: flex;
   padding: 0.4em;
 }
 .post_box .desc > * {
@@ -31,7 +31,25 @@
 .post_box .desc .writer {
   margin-right: auto;
 }
-.post_box .desc .tags > * {
+.post_box .content {
+  height: 20vh;
+  margin: 10px;
+  padding: 2%;
+}
+.post_box button.post.delete {
+  float: right;
+}
+.post_box .footer {
+  border-top: 1px solid #aaa;
+  padding: 1em 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+.post_box .footer .tags {
+  display: flex;
+  align-items: center;
+}
+.post_box .footer .tags > * {
   display: inline-block;
   margin: 0 2px;
   background-color: #181818;
@@ -42,9 +60,4 @@
   color: white;
   font-size: 0.8em;
   cursor: pointer;
-}
-.post_box .content {
-  height: 20vh;
-  margin: 10px;
-  padding: 2%;
 }

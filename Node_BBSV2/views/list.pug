@@ -1,12 +1,14 @@
 extends layout
 block content
+    link(rel="stylesheet",href="/css/list.css")
     section.lists
         div.lists_container
             mixin box
                 div.list_box
                     div.list.color
-                    div.list.content
-                    button.list.delete
+                        div.color_list
+                    div.list.content 잘 먹고 잘 자기
+                    span(class="material-symbols-rounded").list.delete close
             +box
             +box
             +box
@@ -16,5 +18,5 @@ block content
             +box
             +box
         div.input_box
-            input(type="text").list.write
-            button(type="button").list.add
+            input(placeholder="목표를 입력하세요...", type="text").list.write
+            button(type="button").list.add 추가

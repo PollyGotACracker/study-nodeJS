@@ -2,6 +2,14 @@ extends layout
 block content
     link(rel="stylesheet", href="/css/posts.css")
     section.posts
+        form.bbs.search
+            input(placeholder="게시글 검색").search
+            button(type="button").search
+                span(class="material-symbols-rounded") search
+        button.post.add 글쓰기
+        div.tag_search TAGS: 
+            span CSS 
+            span JS
         mixin box
             div.post_box
                 div.title
@@ -11,14 +19,24 @@ block content
                     span.date 2022-11-29 화
                     span.separate &nbsp;|&nbsp;
                     span.time 오전 09:00
+                div.content 포스트 내용입니다.
+                div.footer
                     span.tags 
                         a.tag #CSS
-                        a.tag #JS
-                    span.share
-                div.content 포스트 내용입니다.
+                        a.tag #JS 
+                    div.button_box
+                        button.post.update 수정
+                        button.post.delete 삭제
         +box
         +box
         +box
         +box
         +box
         +box
+        div.pagination
+            button.pg_01 1
+            button.pg_02 2
+            button.pg_03 3
+            button.pg_04 4
+            button.pg_05 5
+            button(type="button").pg_next next

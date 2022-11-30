@@ -141,7 +141,7 @@ p.comment.list.box:hover span.comment.delete {
   padding: 1.2em;
 }
 .comments.input {
-  width: 90%;
+  width: 100%;
   justify-items: flex-end;
   align-items: flex-end;
 }
