@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     // bbs 데이터 전체 SELECT
-    const bbsResult = await BBS.find();
+    const bbsResult = await BBS.find().sort({ b_date: -1, b_time: -1 });
     // SELECT 된 bbs 데이터(bbsResult)를
     // bbsList 변수에 담아서 index 에게 rendering 하기
     return res.render("board", { bbsList: bbsResult });
@@ -87,10 +87,10 @@ router.get("/delete/:id", async (req, res) => {
  * DELETE: 기존 데이터를 삭제할 때
  */
 router.put("/comment/add", async (req, res) => {
-  const { id, ct_comment } = req.body;
+  const { id, ct_writer, ct_comment } = req.body;
   const commentData = {
     ct_comment,
-    ct_writer: "익명",
+    ct_writer,
     ct_date: moment().format(dateFormat),
     ct_time: moment().format(timeFormat),
   };

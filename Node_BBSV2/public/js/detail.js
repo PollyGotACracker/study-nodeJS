@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 댓글 추가 버튼
   const bbsCommentAdd = doc.querySelector("button.comment");
   // 댓글 input box
+  const bbsWriterInput = doc.querySelector("input.writer");
   const bbsCommentInput = doc.querySelector("input.comment");
   const bbsCommentDelete = doc.querySelector("span.comment.delete");
   // 댓글 List 의 span tag 를 클릭했을 때
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   bbsCommentAdd?.addEventListener("click", () => {
     const comment = bbsCommentInput?.value;
+    const writer = bbsWriterInput?.value;
     if (!comment) {
       doc.querySelector(".comments.input .msg").textContent =
         "댓글을 입력하세요.";
@@ -68,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       // id: detail.pug 에서 선언된 게시판 ID
       // comment: 입력한 댓글
-      const commentData = { id, ct_comment: comment };
+      const commentData = { id, ct_writer: writer, ct_comment: comment };
       /**
        * fetch 기본 method 는 GET 방식이다.
        * 데이터를 보낼 때는 POST, PUT 으로 전송을 해야 한다.

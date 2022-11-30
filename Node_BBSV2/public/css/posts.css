@@ -3,6 +3,10 @@
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 20px;
+}
+.post_box:nth-last-child(1) {
+  margin-bottom: 0;
 }
 .post_box .title,
 .post_box .desc,
@@ -23,6 +27,9 @@
 .post_box .desc > * {
   margin: 0 5px;
   color: #333;
+}
+.post_box .desc .writer {
+  margin-right: auto;
 }
 .post_box .desc .tags > * {
   display: inline-block;

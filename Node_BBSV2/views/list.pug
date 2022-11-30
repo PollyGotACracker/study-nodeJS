@@ -1,3 +1,20 @@
 extends layout
 block content
-    section.list
+    section.lists
+        div.lists_container
+            mixin box
+                div.list_box
+                    div.list.color
+                    div.list.content
+                    button.list.delete
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
+        div.input_box
+            input(type="text").list.write
+            button(type="button").list.add
