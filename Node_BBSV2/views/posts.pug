@@ -2,15 +2,22 @@ extends layout
 block content
     link(rel="stylesheet", href="/css/posts.css")
     section.posts
-        div.post_box
-            div.title
-                h2 포스트 제목
-            div.desc
-                span.date 2022-11-29 화
-                span.separate &nbsp;|&nbsp;
-                span.time 오전 09:00
-                span.tags 
-                    a.tag #CSS
-                    a.tag #JS
-                span.share
-            div.content 포스트 내용입니다.
+        mixin box
+            div.post_box
+                div.title
+                    h2 포스트 제목
+                div.desc
+                    span.date 2022-11-29 화
+                    span.separate &nbsp;|&nbsp;
+                    span.time 오전 09:00
+                    span.tags 
+                        a.tag #CSS
+                        a.tag #JS
+                    span.share
+                div.content 포스트 내용입니다.
+        +box
+        +box
+        +box
+        +box
+        +box
+        +box

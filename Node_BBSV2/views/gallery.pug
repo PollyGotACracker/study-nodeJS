@@ -3,46 +3,20 @@ block content
     link(rel="stylesheet", href="/css/gallery.css")
     section.gallery
         div.gallery.img_container
-            div.img_box
-                div.thumb
-                div.title 제목 1
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 2
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 3
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 4
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 5
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 6
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 7
-                span.date 2022-11-29 화
-                span.time 오전 09:00
-            div.img_box
-                div.thumb
-                div.title 제목 8
-                span.date 2022-11-29 화
-                span.time 오전 09:00
+            mixin box
+                div.img_box
+                    div.thumb
+                    div.title 제목
+                    span.date 2022-11-29 화
+                    span.time 오전 09:00
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
+            +box
         div.pagination
             button.pg_01 1
             button.pg_02 2

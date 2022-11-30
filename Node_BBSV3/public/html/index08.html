@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      section.container {
+        width: 500px;
+        margin: 100px auto;
+      }
+      div.image_view {
+        display: flex;
+        overflow: hidden;
+      }
+      div.image_view img {
+        width: 100%;
+        transition: 2s;
+      }
+      div.image_view img.rotate {
+        margin-left: -100%;
+        opacity: 0;
+        transform: rotate(-90deg);
+      }
+      /* image 들을 감싸고 있는 List Box */
+      div.image_list {
+        display: flex;
+        position: relative;
+      }
+      div.image_list img {
+        width: 100%;
+        transition: 2s;
+      }
+      div.ticker {
+        overflow: hidden;
+      }
+      /*
+      div.image_view 를 width:500px 로 하고
+      ticker 내의 img 를 width:100px 로 하였더니
+      ticker 내의 이미지 5개가 배열된다.
+      */
+      div.ticker img {
+        width: 100px;
+      }
+      div.image_list {
+        animation: ticker-slide 5s linear infinite;
+      }
+      /* ticker box 에 hover 되면 애니메이션 멈추기 */
+      div.ticker:hover div.image_list {
+        animation-play-state: paused;
+      }
+      div.image_list img {
+        transition: 0.3s ease-in-out;
+      }
+      /* 이미지에 hover 되면 약간 흐리게 표현하기 */
+      div.image_list img:hover {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      @keyframes ticker-slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-500px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <article class="album">
+        <div class="image_view">
+          <img src="/images/image_1.jpg" width="100%" />
+        </div>
+        <div class="ticker">
+          <div class="image_list"></div>
+        </div>
+      </article>
+    </section>
+    <script>
+      // image_1.jpg ~ image_5.jpg 까지 배열에 담기
+      const imgList = [];
+      for (let i = 0; i < 5; i++) {
+        imgList[i] = `/images/image_${i + 1}.jpg`;
+      }
+      const imgTag = (image) => {
+        const img = document.createElement("IMG");
+        img.src = image;
+        return img;
+      };
+
+      // ticker box 가 클릭되면
+      const tickerClick = (e) => {
+        // 실제로는 내부의 img 가 클릭될 것이다.
+        const tickerImg = e.target;
+        if (tickerImg.tagName !== "IMG") return false;
+        const album = document.querySelector("article.album");
+        // album 안의 큰 이미지 SELECT 하기
+        const albumImg = album.querySelector("img");
+
+        const newImg = document.createElement("IMG");
+        // ticker box 에서 클릭된 img src 를 새로운 img tag 의 src 에 복사
+        // tickerImg 의 src 가 새로 보여줄 newImg 의 src
+        newImg.src = tickerImg.src;
+
+        // script 에서 style 속성을 만들고, Object.assign() 함수를 사용하여 적용
+        // const imgStyle = {
+        //   marginLeft: "-100%",
+        //   opacity: "0",
+        //   transform: "rotate(-90deg)",
+        // };
+        // albumImg 의 style 속성을 imgStyle 에 정의된 형태로 변경
+        // Object.assign(albumImg.style, imgStyle);
+
+        // 이미 만들어진 stylesheet 를 적용하여 애니메이션 효과 주기
+        albumImg.classList.add("rotate");
+        document.querySelector(".album .image_view").appendChild(newImg);
+
+        // 기존의 이미지는 삭제하기
+        /*
+        새로운 이미지를 앨범에 추가하고, 기존 이미지는 애니메이션을 보여주며 사라지고, 
+        기존의 이미지는 삭제하는 동작이 순서대로 이루어지면 좋겠지만 그렇지 않다(비동기 방식이므로).
+        그러한 이유로 원래 있던 이미지를 삭제하는 동작을
+        setTimeout() 함수를 사용하여 시차를 두고 실행해야 한다.
+        */
+        setTimeout(() => {
+          document.querySelector(".album img").remove();
+        }, 2000);
+      };
+
+      document
+        .querySelector("div.ticker")
+        .addEventListener("click", tickerClick);
+
+      const imageListBox = document.querySelector("div.image_list");
+      document.addEventListener("DOMContentLoaded", () => {
+        // const images = imgList.map((img) => imgTag(img));
+        // append 에 같은 배열이 두 번 추가되지 않는다.
+        // imageListBox.append(...images, ...images);  ==> X
+
+        for (let i = 0; i < 2; i++) {
+          const images = imgList.map((img) => imgTag(img));
+          imageListBox.append(...images);
+        }
+
+        // for (let i = 0; i < 2; i++) {
+        //   for (let j = 0; j < imgList.length; j++) {
+        //     imageListBox.appendChild(imgTag(imgList[j]));
+        //   }
+        // }
+      });
+    </script>
+  </body>
+</html>

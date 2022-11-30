@@ -4,8 +4,29 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
+  gap: 5px;
 }
+/*
+cf)
+* grid container 속성
+    (item들의 너비/높이의 합이 container의 너비/높이보다 작을 경우)
+    justify-content: grid contents의 x축 정렬
+    align-content: grid contents의 y축 정렬
+
+    justify-items:	grid item들의 x축 정렬
+    align-items:	grid item들의 y축 정렬
+
+    gap: 각 item 간 간격(row-gap, column-gap)
+
+    cf) auto-fill 과 auto-fit
+    column의 개수를 정하지 않고 설정된 너비의 cell을 최대한 채운다.
+    cell의 개수가 모자랄 경우,
+    auto-fill은 공간을 남기는 반면 auto-fit은 남는 공간만큼 cell 크기를 stretch
+
+* grid item 속성
+    grid-row: grid item의 행 시작 위치 / 끝 위치 지정
+    grid-column: grid item의 열 시작 위치 / 끝 위치 지정
+*/
 .img_box {
   border: 1px solid #aaa;
   border-radius: 5px;

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      section.main {
+        /* 내용물이 있으면 크기를 늘려서 최대 800px 까지만 */
+        max-width: 800px;
+        margin: 100px auto;
+        position: relative;
+      }
+      article.control_box {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        padding: 12px 20px;
+      }
+      article.img_box {
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+      }
+      article.img_box.reverse {
+        flex-direction: row-reverse;
+      }
+      img.img_slide {
+        transition: 2s;
+        width: 100%;
+      }
+      span.badge {
+        background-color: black;
+        display: inline-block;
+        border-radius: 50%;
+        border: 2px solid white;
+        height: 15px;
+        width: 15px;
+      }
+      div.button {
+        font-size: 20px;
+        font-weight: 900;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      div.badge_box,
+      div.button.right {
+        margin-left: auto;
+      }
+      article.control_box:hover div.button {
+        opacity: 1;
+        cursor: pointer;
+      }
+      div.button:hover {
+        color: yellow;
+      }
+      span.badge {
+        margin: 3px;
+      }
+      span.badge:hover {
+        background-color: #ddd;
+        cursor: pointer;
+      }
+      span.badge.active {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main">
+      <article class="control_box">
+        <div class="button left">&lt;</div>
+        <div class="badge_box"></div>
+        <div class="button right">&gt;</div>
+      </article>
+      <article class="img_box">
+        <img class="img_slide" width="100%" />
+      </article>
+    </section>
+    <script>
+      let slideIndex = 1;
+      const control_box = document.querySelector("article.control_box");
+      const badge_box = document.querySelector("div.badge_box");
+      const image_box = document.querySelector("article.img_box");
+      const img = document.querySelector("img.img_slide");
+      img.src = "/images/image_1.jpg";
+
+      const imgList = [
+        "/images/image_1.jpg",
+        "/images/image_2.jpg",
+        "/images/image_3.jpg",
+        "/images/image_4.jpg",
+        "/images/image_5.jpg",
+      ];
+
+      // 이전상태 보관 변수
+      let oldPos = 1;
+      const imageActive = (pos) => {
+        // 새롭게 추가된 img tag 를 SELECT 하여
+        // animation 을 구현하기 위한 코드
+        // 이 코드는 반드시 함수(imageActive) 내에서 실행되어야 한다.
+        const oldImg = document.querySelector("img.img_slide");
+        if (oldPos < pos) {
+          image_box.classList.remove("reverse");
+          oldImg.style.marginLeft = "-100%";
+        } else {
+          image_box.classList.add("reverse");
+          oldImg.style.marginRight = "-100%";
+        }
+        // img.src = imgList[pos - 1];
+        oldImg.style.opacity = "0";
+
+        const nextImage = document.createElement("IMG");
+        nextImage.className = "img_slide";
+        nextImage.src = imgList[pos - 1];
+        image_box.appendChild(nextImage);
+
+        const imgRemove = () => {
+          document.querySelector("article.img_box img").remove();
+        };
+
+        setTimeout(imgRemove, 2000);
+        oldPos = pos;
+      };
+
+      const badgeActive = (pos) => {
+        const dots = badge_box.querySelectorAll("span.badge");
+        for (let dot of dots) {
+          dot.classList.remove("active");
+        }
+        dots[pos - 1].classList.add("active");
+      };
+
+      control_box?.addEventListener("click", (e) => {
+        const controller = e.target;
+        if (controller.tagName === "SPAN") {
+          const pos = controller.dataset.index;
+          slideIndex = pos;
+        } else if (controller.className === "button left") {
+          // image_box.classList.remove("reverse");
+          slideIndex--;
+          // slideIndex 를 1로 초기화했으므로, length 는 마지막 이미지의 Index
+          if (slideIndex < 1) slideIndex = imgList.length;
+        } else if (controller.className === "button right") {
+          // image_box.classList.add("reverse");
+          slideIndex++;
+          if (slideIndex > imgList.length) slideIndex = 1;
+        }
+        badgeActive(slideIndex);
+        imageActive(slideIndex);
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        // _: 첫번째 파라미터는 쓰지 않겠다고 명시
+        // span tag 의 badge 를 이미지 수만큼 생성하고 data-index(dataset) 설정
+        const spans = imgList.map((_, index) => {
+          const span = document.createElement("SPAN");
+          span.className = "badge";
+          span.dataset.index = index + 1;
+          return span;
+        });
+        badge_box?.append(...spans);
+        badgeActive(1);
+      });
+    </script>
+  </body>
+</html>
