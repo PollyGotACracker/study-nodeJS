@@ -66,10 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
   /**
    * cf)
    * saveValue: 게시글 content 줄바꿈을 위한 함수
-   * DB 에 HTML tag 를 저장하지 말 것
    *
-   * detail 페이지에서 content를 표시하는 요소에
-   * white-space: pre-wrap; 설정할 것
+   * 1. DB 에서 HTML tag는 HTML entity 로 자동 치환된다.
+   * 2. detail 페이지에서 content를 표시하는 요소에
+   * white-space: pre-wrap; 을 설정할 경우 HTML tag가 적용되지 않는다.
+   *
    * white-space 속성값
    *              |개행 문자|스페이스, 탭|자동 줄 바꿈|줄 끝의 공백
    * normal	      |병합     |병합	       |예        	|제거
