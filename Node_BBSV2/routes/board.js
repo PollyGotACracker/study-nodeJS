@@ -41,7 +41,7 @@ router.post("/insert", async (req, res) => {
 router.get("/detail/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const result = await BBS.findById(id);
+    let result = await BBS.findById(id);
     return res.render("detail", { bbs: result });
   } catch (err) {
     res.json(err);

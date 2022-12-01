@@ -40,6 +40,8 @@ article.bbs.detail div:nth-of-type(10) {
   grid-column: 1 / 7;
   padding: 50px;
   height: 50vh;
+  /* 게시글 content 줄바꿈 */
+  white-space: pre-wrap;
 }
 .bbs.detail.button.box {
   width: 100%;
