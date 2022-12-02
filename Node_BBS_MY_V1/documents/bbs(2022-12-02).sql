@@ -115,4 +115,17 @@ ON DELETE CASCADE;
 
 -- 참조무결성 관계 삭제
 ALTER TABLE tbl_files
-DROP CONSTRAINT f_bseq;
+DROP CONSTRAINT tbl_files_ibfk_1;
+
+-- ON DELETE CASCADE 가 설정되어있기 때문에
+-- tbl_bbs 의 항목을 삭제하면 덩달아서 tbl_files 의 데이터도 함께 삭제된다.
+SELECT *
+FROM tbl_bbs
+	JOIN tbl_files
+		ON b_seq = f_bseq;
+        
+DELETE FROM tbl_bbs
+WHERE b_seq = 10;
+
+SELECT * FROM tbl_bbs;
+SELECT * FROM tbl_files;

@@ -1,11 +1,14 @@
 // file Upload 를 쉽게 할 수 있도록 도와주는 middleware 선언
+// multer는 multipart (multipart/form-data)인 폼에서만 동작
 import multer from "multer";
+
+// cf) fs: NodeJS 의 File System 모듈. 파일 처리 관련 작업 수행
+// existsSync, mkdirSync
 import fs from "fs";
 import path from "path";
 
 // uuid 의 최신 버전을 사용하기 위한 import
 import { v4 } from "uuid";
-import { fileURLToPath } from "url";
 
 // 파일을 저장할 폴더 지정
 // 이 폴더는 public static 방식으로 접근할 수 있어야 한다.
@@ -17,14 +20,28 @@ const upload_dir = path.join("public/uploads");
 // destination: 최종 파일을 저장할 때 사용하는 함수 선언
 const storageOption = {
   filename: (req, file, cb) => {
-    const uuidPrefix = v4(); //UUID 문자열 생성하기
+    const uuidPrefix = v4(); // UUID 문자열 생성하기
+
+    /**
+     * cf) Buffer
+     * NodeJS 클래스(모듈)로 전역 scope 에서 참조하기 때문에 import 없이 사용 가능
+     * raw binary data 처리
+     */
+
     // UUID-원래파일이름 으로 만들기
-    // cf) Buffer: 한글 문자열 인코딩
+    // 한글 문자열 인코딩 처리
+    // form 의 enctype 속성값 multipart/form-data 한글명 깨지는 현상
+    // Buffer.from() 인코딩 형식 latin1 지정(기본값 utf8)
+    // => toString()을 사용하여 utf8 로 변환
+
     const newFileName = Buffer.from(
       `${uuidPrefix}-${file.originalname}`,
       "latin1"
     ).toString("utf8");
-
+    console.log("Conv");
+    file.originalname = Buffer.from(file.originalname, "latin1").toString(
+      "utf8"
+    );
     const uploadFileName = newFileName.substring(newFileName.length - 255);
 
     // 새로 변경된 파일 이름을 multer 에게 전달하기
@@ -41,7 +58,7 @@ const storageOption = {
        *
        * 이 때 recursive 속성을 true 로 설정하면 모든 경로에 대하여
        * 검사한 후 폴더가 없으면 순차적으로 모두 생성한다.
-       * nodeJS 10.x 이상에서 사용한다.
+       * NodeJS 10.x 이상에서 사용한다.
        */
 
       fs.mkdirSync(upload_dir, { recursive: true });
