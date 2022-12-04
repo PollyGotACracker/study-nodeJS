@@ -9,7 +9,7 @@ INSERT 를 수행할 때 특별히 값이 없을 때 또는 0 일 때
 DEFAULT 속성
 INSERT 를 수행할 때 특별히 값이 없을 때 채워넣을 값 지정
 
-** config 에서 timezone 설정
+** db_config.js 에서 timezone: "+09:00" 설정 필요
 (DATE_FORMAT(NOW(), '%Y-%m-%d')
 현재 DB 가 설치된 서버(컴퓨터)의 현재 시각을 가져와서
 YYYY-MM-DD 형식의 문자열로 변환하라
@@ -97,9 +97,9 @@ CREATE TABLE tbl_files(
 	f_bseq	BIGINT	NOT NULL,	
 	f_date	VARCHAR(10)	NOT NULL	DEFAULT (DATE_FORMAT(NOW(), '%Y-%m-%d')),
 	f_time	VARCHAR(10)	NOT NULL	DEFAULT (DATE_FORMAT(NOW(), '%H:%i:%S')),
-	f_original_name	VARCHAR(225)	NOT NULL,	
-	f_save_name	VARCHAR(225)	NOT NULL,	
-	f_ext	VARCHAR(10)	NOT NULL,	
+	f_original_name	VARCHAR(225)	NOT NULL,	-- 첨부할 당시 파일명
+	f_save_name	VARCHAR(225)	NOT NULL,	-- 저장되었을 때 파일명
+	f_ext	VARCHAR(10)	NOT NULL,	-- 파일의 확장자(파일 형식) 저장
 	PRIMARY KEY(f_seq),
 	CONSTRAINT f_bbs
 	FOREIGN KEY(f_bseq) REFERENCES tbl_bbs(b_seq)

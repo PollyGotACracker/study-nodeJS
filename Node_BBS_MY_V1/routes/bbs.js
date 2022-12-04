@@ -1,5 +1,5 @@
 import express from "express";
-// file_upload.js: multer export
+// file_upload.js: multer storage export
 import fileUp from "../modules/file_upload.js";
 import DB from "../models/index.js";
 import fs from "fs";
@@ -36,10 +36,11 @@ router.get("/", async (req, res) => {
     return res.send("file SQL Error");
   }
 
-  // 다음과 같은 코드는 Reponse 오류가 난다
-  //    if(a=== 3) res.send("A 는 3이다")
+  // 다음과 같은 코드는 Response 오류가 난다.
+  //    if(a === 3) res.send("A 는 3이다")
   //    else res.send("A 는 3이 아니다")
   //    res.render("bbs/list");
+  // ==> res.send 가 실행된 후 res.render 가 실행되기 때문
 });
 
 router.get("/insert", (req, res) => {
@@ -47,27 +48,31 @@ router.get("/insert", (req, res) => {
 });
 
 /**
+ * import fileUp from "../modules/file_upload.js";
  * fileUp middleware 사용하여 파일 받기
- * fileUp.single("태그 name")
- * 한 개씩 파일을 받을 때 이 때는 req.file 속성에 파일에 대한 정보가 담긴다.
  *
- * fileUp.array("태그 name")
+ * fileUp.single("input 태그의 name")
+ * 한 개씩 파일을 받을 때
+ * 이 때는 req.file 속성에 파일에 대한 정보가 담긴다.
+ *
+ * fileUp.array("input 태그의 name")
  * 여러 개의 파일을 첨부하여 받을 때
  * 이 때는 req.files 속성에 파일에 대한 정보를 배열로 받는다.
  *
- * fileUp.fields({name: "태그1", name: "태그2"})
+ * fileUp.fields([{name: "태그1"}, {name: "태그2"}])
  * input type ='file' 속성을 갖는 tag 들이 form 에 여러 개 있을 때 한번에 받기
  * 이 때도 req.files 속성에 파일에 대한 정보가 배열로 담긴다.
  */
 
+// 한 개의 file 혹은 여러 개의 files 객체(배열)를
+// request 객체에 추가(req.file 또는 req.files)
 router.post("/insert", fileUp.array("b_upfile"), async (req, res) => {
   // fileUp Middleware 가 정상적으로 파일을 업로드 하고 나면
-  // req 에 file 이라는 속성을 생성하고
-  // 업로드한 파일 정보를 담아준다.
+  // req 에 file 또는 files 속성을 생성하고 업로드한 파일 정보를 담는다.
   // router 코드에서 file 정보를 사용할 수 있다.
   const file = req.file; // single 로 받을 때, 단 array 로 받으면 undefined
   const files = req.files; // array 로 받을 때
-  const bbs = req.body;
+  const bbs = req.body; // type 값이 text 인 input 들의 value
   console.log("파일들", files, "파일", file);
 
   const upLoadFile = (bbs, file) => {
@@ -83,19 +88,23 @@ router.post("/insert", fileUp.array("b_upfile"), async (req, res) => {
   try {
     // 게시글 저장
     /**
-     * 여기에 코드가 도달하면 req.file 로부터
-     * 업로드된 파일 정보가 file 변수에 저장된 상태이다.
+     * 여기에 코드가 도달하면 req.files 로부터
+     * 업로드된 파일 정보가 files 변수에 저장된 상태이다.
      *
      * 1. 게시글을 insert 한다.
      * 2. insert 된 게시글의 seq(b_seq)를 추출하여
      * 3. tbl_files 테이블에 insert 할 때 사용한다.
      */
+    // insert text values(bbs 테이블 게시글 저장)
     const bbsResult = await BBS.create(bbs);
+
+    // 각 file 마다 upLoadFileInfo 객체를 생성하여
+    // 하나의 배열로 반환 (files 테이블에 저장할 내용)
     const filesInfo = files.map((file) => {
       return upLoadFile(bbsResult, file);
     });
-
-    // 다수의 데이터를 insert 하기
+    console.log(filesInfo);
+    // cf) bulkCreate(): sequelize 메서드. 다수의 데이터를 한번에 insert
     const fileResult = await FILES.bulkCreate(filesInfo);
     return res.redirect(`/bbs/detail/${bbsResult.b_seq}`);
     // return res.render("bbs/detail", { bbsResult, fileResult, upLoadFileInfo });
@@ -131,7 +140,7 @@ router.get("/detail/:seq", async (req, res) => {
 router.get("/delete/:seq", async (req, res) => {
   const seq = req.params.seq;
   const upLoadDir = path.join("public/uploads");
-  // try 문 밖에서 변수 사용
+  // try 문 밖에서 사용하기 위한 global 변수 선언
   let files;
 
   try {
@@ -143,9 +152,11 @@ router.get("/delete/:seq", async (req, res) => {
   await files.forEach(async (file) => {
     try {
       const delFile = path.join(upLoadDir, file.f_save_name);
-      // file 이 어떤 상태인가를 검사하는 함수
+      // fs.statSync(): file 이 어떤 상태인가를 검사
+      // 파일의 세부 정보를 포함한 Stats 객체 반환
       // 만약 delFile 이 없으면 exception 이 발생
       fs.statSync(delFile);
+      // fs.unlinkSync(): 해당 파일 제거
       fs.unlinkSync(delFile);
     } catch (err) {
       console.log(file.f_save_name, "없음");

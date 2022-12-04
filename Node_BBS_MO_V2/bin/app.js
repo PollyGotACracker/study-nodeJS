@@ -35,7 +35,7 @@ const app = express();
  */
 const dbConn = mongoose.connection;
 // mongoose 를 통해서 mongoDB 에 정상적으로 접속되었을 때
-// 최초에 한번 실행되는 evnet 핸들러
+// 최초에 한번 실행되는 event 핸들러
 dbConn.once("open", () => {
   console.log("MongoDB Open OK");
 });
