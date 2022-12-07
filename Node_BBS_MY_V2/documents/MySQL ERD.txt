@@ -1,0 +1,8 @@
+MySQL ERD 생성
+
+1. 사이드바에서 database 선택
+2. 탭 메뉴에서 Database -> Reverse Engineer... 선택
+3. database password 입력
+4. database 선택
+5. execute 버튼 클릭
+6. ERD 가 생성되면, 탭 메뉴에서 File -> Export -> Export as PNG... 로 저장
