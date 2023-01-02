@@ -12,3 +12,7 @@ CREATE TABLE tbl_todolist(
 );
 
 DESC tbl_todolist;
+DROP TABLE tbl_todolist;
+SHOW TABLES;
+
+SELECT * FROM tbl_todolist;

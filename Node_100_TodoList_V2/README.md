@@ -31,5 +31,5 @@ sequelize-auto --database todo --host localhost --user root --pass '!Biz8080'
 ## NodeJS Server 와 React Client 통합
 
 - React 프로젝트를 NodeJS 프로젝트에 복사  
-  react-client' 로 폴더명 변경
+  'react-client' 로 폴더명 변경
 - `app.use(express.static(path.join("react-client/build")))`
