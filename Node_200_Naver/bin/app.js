@@ -18,16 +18,17 @@ import logger from "morgan";
 // MySQL Sequelize
 import DB from "../models/index.js";
 
-// sample router modules
+// router modules
 import indexRouter from "../routes/index.js";
 import usersRouter from "../routes/users.js";
+import bookRouter from "../routes/book.js";
 
 // create express framework
 const app = express();
 
-// DB.sequelize.sync({ force: true }).then((dbConn) => {
-//   console.log(dbConn.options.host, dbConn.config.database, "DB Connection OK");
-// });
+DB.sequelize.sync({ force: true }).then((dbConn) => {
+  console.log(dbConn.options.host, dbConn.config.database, "DB Connection OK");
+});
 
 // Disable the fingerprinting of this web technology.
 app.disable("x-powered-by");
@@ -46,6 +47,7 @@ app.use(express.static(path.join("public")));
 // router link enable
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/book", bookRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

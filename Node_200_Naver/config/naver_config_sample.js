@@ -8,6 +8,6 @@ const CLIENT_SECRET = {
   KEY: "X-Naver-Client-Secret",
   VALUE: "YOUR CLIENT SECRET",
 };
-const BOOK_URL_JSON = "https://openapi.naver.com/v1/search/blog.json";
+const BOOK_URL_JSON = "https://openapi.naver.com/v1/search/book.json";
 
 export { CLIENT_ID, CLIENT_SECRET, BOOK_URL_JSON };
