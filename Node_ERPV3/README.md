@@ -20,6 +20,9 @@ npm install
 sequelize-auto -d erpDBV2 -h localhost -u root -x !Biz8080
 ```
 
+- shell 에서 문자열을 묶을 때 작은따옴표를 사용해야 문자열을 그대로 출력한다.  
+  큰따옴표를 사용하게 될 경우 변수로 인식하여 값으로 치환된다.
+
 ## gradient
 
 https://cssgradient.io/
