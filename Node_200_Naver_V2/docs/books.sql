@@ -24,15 +24,16 @@ CREATE TABLE tbl_mybooks (
 		PRIMARY KEY(my_username, my_isbn)			
 );
 
-ALTER TABLE tbl_mybooks DROP CONSTRAINT f_users;
+ALTER TABLE tbl_mybooks DROP f_users;
+-- ALTER TABLE tbl_mybooks DROP CONSTRAINT f_users;
 DROP TABLE tbl_users;
 
 CREATE TABLE tbl_users(
 	username	VARCHAR(15)	NOT NULL	PRIMARY KEY,
-	password	VARCHAR(13)	NOT NULL,
+	password	VARCHAR(255)	NOT NULL,
 	u_name	VARCHAR(125)	NOT NULL,	
 	u_tel	VARCHAR(15),
-	y_addr	VARCHAR(255),		
+	u_addr	VARCHAR(255),		
 	u_nickname	VARCHAR(125),
 	u_level	INT
 );
