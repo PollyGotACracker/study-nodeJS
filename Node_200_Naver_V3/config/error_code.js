@@ -1,3 +1,7 @@
+// client 에 보내 사용자에게 표시하기 위한 데이터
+// system_error, book_error, join_error, login_error
+// sql query 처리 / mybook 추가 / 회원가입 / 로그인
+
 export const system_error = {
   SQL_ERROR: {
     CODE: "SQL_SYSTEM",

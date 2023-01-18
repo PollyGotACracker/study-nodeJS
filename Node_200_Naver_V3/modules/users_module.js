@@ -1,3 +1,6 @@
+// router 에서 호출하면 전달받은 데이터를 처리한 후 결과 반환
+// userJoin, userLogin
+
 import DB from "../models/index.js";
 import { system_error, join_error, login_error } from "../config/error_code.js";
 import crypto from "crypto";

@@ -1,3 +1,6 @@
+// router 에서 호출하면 전달받은 데이터를 처리한 후 결과 반환
+// bookInput, getMyBooks
+
 import DB from "../models/index.js";
 import { book_error } from "../config/error_code.js";
 
@@ -64,7 +67,6 @@ export const bookInput = async (book, user) => {
 
 export const getMyBooks = async (user) => {
   const username = user.username;
-
   let myBooks = null;
   try {
     myBooks = await MY_BOOKS.findAll({
@@ -75,6 +77,7 @@ export const getMyBooks = async (user) => {
     console.log(err);
     throw new Error("MyBook Select 오류");
   }
+
   const myBooksInfo = myBooks.map((book) => {
     return book.my_isbn_tbl_book;
   });
