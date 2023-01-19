@@ -1,0 +1,16 @@
+section.book {
+  width: 80%;
+  margin: 10px auto;
+}
+
+section.book.detail div {
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+/* input box readOnly 속성이 true 이면 */
+section.book.detail input:read-only {
+  color: #777;
+  border: 0;
+  outline: 0;
+}
