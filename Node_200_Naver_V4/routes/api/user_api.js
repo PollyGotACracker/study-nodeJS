@@ -21,12 +21,18 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/session", async (req, res) => {
-  const user = req.session?.user;
+  const user = req.session.user;
   if (!user) return res.json(USER_RES.USER_NOT_SESSION);
   return res.json(user);
 });
 
 router.post("/join", (req, res) => {});
+
+router.get("/logout", (req, res) => {
+  // req.session 에는 optional chaining 안됨!!
+  req.session.user = undefined;
+  return res.json(null);
+});
 
 router.get("/info", (req, res) => {});
 
