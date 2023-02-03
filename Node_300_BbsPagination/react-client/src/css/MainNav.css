@@ -1,0 +1,23 @@
+nav.main {
+  background-color: rgb(69, 76, 222);
+  color: white;
+}
+
+nav.main ul {
+  list-style: none;
+  display: flex;
+}
+
+nav.main a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  margin: 8px 18px 5px 15px;
+  padding: 10px;
+  border-bottom: 3px solid transparent;
+  transition: 0.7s;
+}
+
+nav.main a:hover {
+  border-bottom: 3px solid yellowgreen;
+}
