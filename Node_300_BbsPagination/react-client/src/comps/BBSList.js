@@ -1,4 +1,27 @@
 import { Link, useLoaderData } from "react-router-dom";
+import BBSSearch from "./BBSSearch";
+import PageNav from "./PageNav";
+
+export const loader = async ({ params, values }) => {
+  console.log(values.orderValue, values.filterValue);
+  const pageNum = params?.pageNum || 1;
+  const listLimit = 5;
+  const pageNavCount = 5;
+
+  // JSON type 의 객체를 queryString 객체로 변환
+  const apiParams = new URLSearchParams({
+    pageNum,
+    order: values.orderValue.eng,
+    filter: values.filterValue.eng,
+    listLimit,
+    pageNavCount,
+  });
+  const strParams = apiParams.toString();
+
+  const res = await fetch(`/api?${strParams}`);
+  const { bbsList, pagination } = await res.json();
+  return { bbsList, pagination };
+};
 
 const bbsListView = (bbsList) => {
   return bbsList.map((bbs) => {
@@ -24,19 +47,23 @@ const BBSList = () => {
   const listResult = bbsListView(bbsList);
 
   return (
-    <table className="bbs list">
-      <thead>
-        <tr>
-          <th>SEQ</th>
-          <th>작성일자</th>
-          <th>작성시각</th>
-          <th>작성자</th>
-          <th>제목</th>
-          <th>조회수</th>
-        </tr>
-      </thead>
-      <tbody>{listResult}</tbody>
-    </table>
+    <>
+      <table className="bbs list">
+        <thead>
+          <tr>
+            <th>SEQ</th>
+            <th>작성일자</th>
+            <th>작성시각</th>
+            <th>작성자</th>
+            <th>제목</th>
+            <th>조회수</th>
+          </tr>
+        </thead>
+        <tbody>{listResult}</tbody>
+      </table>
+      <BBSSearch />
+      <PageNav />
+    </>
   );
 };
 

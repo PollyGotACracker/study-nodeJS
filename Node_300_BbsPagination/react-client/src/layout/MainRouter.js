@@ -1,17 +1,43 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
-import BBSMain, { loader as BBSLoader } from "../comps/BBSMain";
+import BBSDetail from "../comps/BBSDetail";
+import BBSList, { loader as BBSListLoader } from "../comps/BBSList";
+import BBSLoading from "../comps/BBSLoading";
+import BBSMain from "../comps/BBSMain";
+import { useBBSContext } from "../context/BBSContext";
 
-const MainRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      { path: "", loader: BBSLoader, element: <BBSMain /> },
-      { path: "bbs/:pageNum", loader: BBSLoader, element: <BBSMain /> },
-      { path: "bbs/detail/:id", loader: BBSLoader, element: <BBSMain /> },
-    ],
-  },
-]);
+const MainRouterProvider = () => {
+  const { orderValue, filterValue, searchInput } = useBBSContext();
 
-export default MainRouter;
+  const MainRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { path: "", element: <h1>여기는 Home 입니다.</h1> },
+        {
+          path: "bbs",
+          element: <BBSMain />,
+          children: [
+            {
+              path: ":pageNum",
+              loader: async ({ params }) =>
+                await BBSListLoader({
+                  params,
+                  values: { orderValue, filterValue, searchInput },
+                }),
+              element: <BBSList />,
+            },
+            { path: "detail/:id", element: <BBSDetail /> },
+          ],
+        },
+      ],
+    },
+  ]);
+
+  return (
+    <RouterProvider router={MainRouter} fallbackElement={<BBSLoading />} />
+  );
+};
+
+export default MainRouterProvider;
