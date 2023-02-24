@@ -5,7 +5,7 @@ const router = express.Router();
 
 /**
  * 전체 데이터 개수 : DB table 의 데이터 개수, listTotalCount
- * 한 화면에 보여질 데이터 개수 : 10개, pageLimit
+ * 한 화면에 보여질 데이터 개수 : 10개, listLimit
  * 한 화면에 보여질 페이지 Nav 버튼 개수 : 10개, pageNavCount
  * 현재 선택된 페이지 번호(Nav 버튼 번호), pageNum
  */
