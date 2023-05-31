@@ -1,0 +1,38 @@
+form.edit div:not(:nth-last-of-type(1)) {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+form.edit label {
+  display: inline-block;
+  font-weight: 700;
+  width: 5em;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 1em;
+  white-space: nowrap;
+}
+form.edit input {
+  width: 30em;
+  border-radius: 5px;
+  border: 1px solid #999;
+  outline: none;
+  padding: 1em;
+}
+
+div.btn_container {
+  width: calc(100% - 6em);
+  margin-left: auto;
+  justify-content: space-between;
+}
+div.btn_container > button {
+  padding: 1em 2.2em;
+}
+div.btn_container > button:nth-last-of-type(1) {
+  background-color: #000;
+}
+div.btn_container > button:nth-last-of-type(1):hover {
+  background-color: #888;
+}

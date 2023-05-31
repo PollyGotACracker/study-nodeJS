@@ -1,0 +1,47 @@
+div.detail_container {
+  width: 80%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0 0 1.5em 0;
+}
+table.detail {
+  width: 60%;
+  border: 1px solid #999;
+}
+table.detail th,
+table.detail td {
+  border: 1px solid #999;
+}
+table.detail th {
+  width: 8em;
+}
+table.detail td {
+  width: 15em;
+  padding: 0.5em;
+}
+
+table.data {
+  width: 80%;
+}
+table.data tbody td {
+  padding: 0.5em;
+  border-bottom: 1px dotted #999;
+  text-align: center;
+}
+
+div.btn_container:nth-of-type(1) {
+  flex: 1 0 0;
+  margin-left: 0.5em;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+div.btn_container:nth-of-type(1) > button {
+  margin: 0 0.5em;
+}
+div.btn_container:nth-of-type(2) {
+  width: 80%;
+}
+div.btn_container:nth-of-type(2) > button {
+  margin-left: auto;
+}

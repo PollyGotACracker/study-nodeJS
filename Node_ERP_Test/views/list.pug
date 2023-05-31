@@ -1,0 +1,28 @@
+extends layout
+
+block scripts
+  link(rel='stylesheet', href='/css/list.css')
+  script(src="/js/list.js")
+
+block content
+  section.main
+    table.list
+      thead
+        tr
+          th 고객ID
+          th 이름
+          th 전화번호
+          th 담당자명
+          th 담당자연락처
+          th 매출액합계(만원)
+      tbody
+        each buyer in buyers
+          tr(data-num= `${buyer.b_num}`)
+            td(title="b_num")= buyer.b_num 
+            td(title="b_name")= buyer.b_name
+            td(title="b_tel")= buyer.b_tel
+            td(title="b_mname")= buyer.b_mname
+            td(title="b_mtel")= buyer.b_mtel
+            td
+    div.btn_container
+      button.btn_add 거래처추가

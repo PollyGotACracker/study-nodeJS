@@ -1,0 +1,28 @@
+extends layout
+
+block scripts
+  link(rel='stylesheet', href='/css/edit.css')
+  script(src="/js/edit.js")
+
+block content
+  section.main
+    form(method="POST" onsubmit="return false").edit
+      div
+        label(for="b_num") 거래처ID
+        input(name="b_num" id="b_num" placeholder="거래처 ID를 입력하세요" type="text" maxlength="4" value= buyers.b_num)
+      div
+        label(for="b_name") 거래처명
+        input(name="b_name" id="b_name" placeholder="거래처 이름을 입력하세요" type="text" maxlength="10" value= buyers.b_name)
+      div
+        label(for="b_tel") 전화번호
+        input(name="b_tel" id="b_tel" placeholder="연락처를 입력하세요" type="text" maxlength="12" value= buyers.b_tel)
+      div
+        label(for="b_mname") 담당자명
+        input(name="b_mname" id="b_mname" placeholder="담당자명을 입력하세요" type="text" maxlength="10" value= buyers.b_mname)
+      div
+        label(for="b_addr") 주소
+        input(name="b_addr" id="b_addr" placeholder="주소를 입력하세요" type="text" maxlength="125" value= buyers.b_addr)
+      div.btn_container
+        button.btn_save 저장
+        button(type="reset").btn_reset 새로작성
+        button.btn_list 리스트로

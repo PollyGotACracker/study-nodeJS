@@ -1,0 +1,21 @@
+table.list {
+  width: 90%;
+}
+table.list tbody td {
+  padding: 0.5em;
+  border-bottom: 1px dotted #999;
+  text-align: center;
+}
+table.list tbody tr {
+  cursor: pointer;
+}
+table.list tbody tr:hover {
+  background-color: #eee;
+}
+
+div.btn_container {
+  width: 90%;
+}
+button.btn_add {
+  margin-left: auto;
+}

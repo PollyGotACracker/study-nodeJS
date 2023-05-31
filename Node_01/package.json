@@ -1,4 +1,8 @@
 {
+  "name": "node_01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/www.js",
   "type": "module",
   "dependencies": {
     "express": "^4.18.2"
